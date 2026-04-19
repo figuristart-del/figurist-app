@@ -1,0 +1,2304 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Figurist — Custom AI Figures</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<style>
+
+:root{--navy:#1e3a5f;--navy-deep:#0f2340;--navy-light:#2d5282;--cream:#faf7f2;--cream-warm:#f5ede0;--coral:#e07856;--coral-light:#f4a07e;--gold:#d4a574;--charcoal:#2a2a2a;--soft-gray:#6b7280;--border-soft:#e5e0d5}
+
+*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--charcoal)}
+
+.font-display{font-family:'Fraunces',serif;font-optical-sizing:auto}
+
+.bg-navy{background:var(--navy)}.bg-navy-deep{background:var(--navy-deep)}.bg-cream{background:var(--cream)}.bg-cream-warm{background:var(--cream-warm)}.bg-coral{background:var(--coral)}
+
+.text-navy{color:var(--navy)}.text-coral{color:var(--coral)}.border-navy{border-color:var(--navy)}.border-soft{border-color:var(--border-soft)}
+
+.hero-gradient{background:radial-gradient(ellipse at top left,rgba(224,120,86,.12) 0%,transparent 50%),radial-gradient(ellipse at bottom right,rgba(30,58,95,.08) 0%,transparent 50%),var(--cream)}
+
+.btn-primary{background:var(--navy);color:var(--cream);transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+
+.btn-primary:hover{background:var(--navy-deep);transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,58,95,.25)}
+
+.btn-primary:active{transform:translateY(0)}
+
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+.btn-coral{background:var(--coral);color:white;transition:all .3s}
+
+.btn-coral:hover{background:#d16a49;transform:translateY(-2px);box-shadow:0 8px 24px rgba(224,120,86,.3)}
+
+.btn-coral:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+.btn-outline{border:1.5px solid var(--navy);color:var(--navy);background:transparent;transition:all .3s}
+
+.btn-outline:hover{background:var(--navy);color:var(--cream)}
+
+.btn-outline:disabled{opacity:.4;cursor:not-allowed}
+
+.card-premium{background:white;border:1px solid var(--border-soft);border-radius:16px;transition:all .3s}
+
+.card-premium:hover{border-color:var(--navy);box-shadow:0 12px 32px rgba(30,58,95,.08);transform:translateY(-4px)}
+
+.step-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;transition:all .4s cubic-bezier(.4,0,.2,1);border:2px solid var(--border-soft);background:white;color:var(--soft-gray)}
+
+.step-dot.active{background:var(--navy);border-color:var(--navy);color:var(--cream);transform:scale(1.1)}
+
+.step-dot.done{background:var(--coral);border-color:var(--coral);color:white}
+
+.upload-zone{border:2px dashed var(--border-soft);background:rgba(250,247,242,.6);transition:all .3s}
+
+.upload-zone:hover,.upload-zone.drag-over{border-color:var(--coral);background:rgba(244,160,126,.08)}
+
+.variant-card{cursor:pointer;transition:all .3s;border:2px solid var(--border-soft);background:white;border-radius:12px;overflow:hidden}
+
+.variant-card:hover{border-color:var(--navy-light);transform:translateY(-2px)}
+
+.variant-card.selected{border-color:var(--coral);background:rgba(244,160,126,.05);box-shadow:0 8px 24px rgba(224,120,86,.15)}
+
+.ai-result{cursor:pointer;transition:all .3s;border:3px solid transparent;border-radius:12px;overflow:hidden;position:relative;background:white}
+
+.ai-result:hover{transform:scale(1.02)}
+
+.ai-result.selected{border-color:var(--coral);box-shadow:0 12px 32px rgba(224,120,86,.25)}
+
+.ai-result.selected::after{content:'✓';position:absolute;top:8px;right:8px;background:var(--coral);color:white;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:18px}
+
+@keyframes shimmer{0%{background-position:-1000px 0}100%{background-position:1000px 0}}
+
+.shimmer{background:linear-gradient(90deg,#f0ebe0 0%,#faf7f2 50%,#f0ebe0 100%);background-size:1000px 100%;animation:shimmer 2s infinite linear}
+
+@keyframes fade-in-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.fade-in-up{animation:fade-in-up .6s cubic-bezier(.4,0,.2,1) forwards}
+
+@keyframes pulse-dot{0%,100%{opacity:.4;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+
+.dot-1{animation:pulse-dot 1.4s infinite}.dot-2{animation:pulse-dot 1.4s infinite;animation-delay:.2s}.dot-3{animation:pulse-dot 1.4s infinite;animation-delay:.4s}
+
+input[type="text"],input[type="email"],input[type="tel"],input[type="password"],textarea,select{background:white;border:1.5px solid var(--border-soft);border-radius:10px;padding:12px 16px;font-family:'Inter',sans-serif;transition:all .2s;width:100%;font-size:14px}
+
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(30,58,95,.1)}
+
+.scroll-hide::-webkit-scrollbar{display:none}.scroll-hide{scrollbar-width:none}
+
+.admin-row:hover{background:var(--cream-warm)}
+
+.status-pending{background:#fef3c7;color:#92400e}.status-approved{background:#d1fae5;color:#065f46}.status-shipped{background:#dbeafe;color:#1e40af}
+
+@media print{body *{visibility:hidden}.print-label,.print-label *{visibility:visible}.print-label{position:absolute;left:0;top:0;width:100%}.no-print{display:none !important}}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" data-type="module">
+
+const { useState, useEffect, useRef } = React;
+
+
+
+// ============= STORAGE =============
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+
+import { getFirestore, collection, doc, setDoc, getDocs, updateDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyCE4uTDF2l9FMAJ8Xg2BF08u7eAvQujA8I",
+
+  authDomain: "figurist-67b22.firebaseapp.com",
+
+  projectId: "figurist-67b22",
+
+  storageBucket: "figurist-67b22.firebasestorage.app",
+
+  messagingSenderId: "700210213365",
+
+  appId: "1:700210213365:web:ccf2f723fd86a8d51cb0bc"
+
+};
+
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+
+const saveOrder = async (order) => {
+
+  try { await setDoc(doc(db, "orders", order.id), order); return true; } 
+
+  catch (e) { console.error("Kayıt hatası: ", e); return false; }
+
+};
+
+const loadAllOrders = async () => {
+
+  try {
+
+    const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
+
+    const querySnapshot = await getDocs(q);
+
+    const orders = [];
+
+    querySnapshot.forEach((doc) => orders.push(doc.data()));
+
+    return orders;
+
+  } catch (e) { console.error("Yükleme hatası: ", e); return []; }
+
+};
+
+const updateOrderStatus = async (orderId, status) => {
+
+  try {
+
+    const orderRef = doc(db, "orders", orderId);
+
+    const updates = { status: status, updatedAt: new Date().toISOString() };
+
+    if (status === 'approved') updates.approvedAt = new Date().toISOString();
+
+    if (status === 'shipped') updates.shippedAt = new Date().toISOString();
+
+    await updateDoc(orderRef, updates);
+
+    return true;
+
+  } catch (e) { console.error("Güncelleme hatası: ", e); return false; }
+
+};
+
+
+
+// ============= CONSTANTS =============
+
+const VARIANTS = [
+
+  { id: 'sw8', name: 'Standard Wood', size: '8"', price: 39.00, material: 'wood', featured: false },
+
+  { id: 'sw12', name: 'Standard Wood', size: '12"', price: 54.01, material: 'wood', featured: true },
+
+  { id: 'sw14', name: 'Standard Wood', size: '14"', price: 68.02, material: 'wood', featured: false },
+
+  { id: 'bundle', name: '3pc Accessory Bundle', size: 'Keych+Mag+Orn', price: 49.53, material: 'bundle', featured: false },
+
+  { id: 'pa8', name: 'Premium Acrylic', size: '8"', price: 68.51, material: 'acrylic', featured: false },
+
+  { id: 'pa12', name: 'Premium Acrylic', size: '12"', price: 94.00, material: 'acrylic', featured: true },
+
+  { id: 'pa14', name: 'Premium Acrylic', size: '14"', price: 119.00, material: 'acrylic', featured: false },
+
+  { id: 'fullset', name: 'Acrylic FULL SET', size: '8" Fig + 3 Acc', price: 98.80, material: 'fullset', featured: true },
+
+];
+
+
+
+const MASTER_PROMPT = `Act as an expert digital illustrator. Create a premium, full-length 2D custom figure tailored for the US and European e-commerce market.
+
+
+
+The result must be a 100% digital illustration, NOT photorealistic.
+
+
+
+[CRITICAL DRAWING TECHNIQUE & STYLE]
+
+* Unified humorous, semi-realistic caricature style.
+
+* Clean, very vibrant, high-impact UV-print-friendly quality.
+
+* Use rich saturated colors, strong contrast, and crisp outlines.
+
+* Apply glossy highlights, vivid shading, and smooth, lively skin texture appropriate to the ethnicity.
+
+* Bright expressive eyes with sharp definition. Teeth must look natural with soft gradients and subtle separation.
+
+* Maintain realistic fabric folds, sharp highlights, and clean textures on clothing.
+
+* Ultra-sharp, high-resolution output. Pixel-clean edges, no blur or artifacts.
+
+
+
+[STRICT PROPORTIONS & ANATOMY]
+
+* STRICT 30% HEAD RATIO: The total vertical height of the head MUST be exactly 30% of the entire figure's height. 
+
+* The body is stylized and smaller relative to the head, adhering strictly to this fixed 30% head proportion. However, the body MUST retain standard adult shapes for limbs (normal arm and leg shapes, no dwarf-like short limbs).
+
+* Any props held must be scaled approximately 30% larger than real-life size.
+
+
+
+[DYNAMIC SKIN TONE MATCHING (CRITICAL)]
+
+* HEAD DICTATES BODY COLOR: The AI MUST analyze the specific skin tone, ethnicity, undertones, and melanin level of the uploaded HEAD REFERENCE. This EXACT skin color palette must then be applied uniformly to ALL visible skin areas of the body.
+
+* SEAMLESS UNIFORMITY: There must be ZERO difference in hue, saturation, or brightness between the face and the rest of the body. The transition at the neck must be flawless.
+
+
+
+[LIKENESS & HEAD-BODY CONNECTION]
+
+* Preserve the exact facial expression, eye shape, smile, head angle, hairstyle, and unique facial details from the photo. Do NOT generate a generic face.
+
+* Place the head naturally onto the body. The neck and throat area MUST be visible, anatomically correct, and color-matched perfectly to the head. No floating head, no cut-off neck.
+
+* Hands and fingers MUST be fully redrawn with correct anatomy and the correct, matched ethnic skin tone.
+
+
+
+[COMPOSITION & COMMERCIAL SAFETY]
+
+* ASPECT RATIO: 2:3 (Vertical).
+
+* BACKGROUND: Pure white background only (#FFFFFF). No text, no watermark, no background shadows, no scenery.
+
+* The entire figure must be completely visible, standing from head to toe within the frame. Shoes must be clearly shown.
+
+* NO flying/floating objects. NO fragile thread-like details (outlines must be robust for physical cutting).
+
+* ZERO brand infringement. NO copyrighted logos, real-world emblems, or sports team names. If generic text is used, it MUST be entirely in English.
+
+
+
+[IMPORTANT PRODUCTION CONSTRAINT]
+
+We laser-cut this illustration from 5mm MDF or acrylic along the outline. Therefore:
+
+- NO thin floating objects (needles, threads, spears, arrows, thin antennas) unless connected to a thicker structure behind them.
+
+- Example: if the character holds a needle, the needle must have the clothing or arm continuing behind it so it's structurally supported for cutting.
+
+- Body language must be FUNNY and expressive to have visual appeal.
+
+- No text on the figure. No Turkish text anywhere - target audience is US/European Etsy customers.`;
+
+
+
+const PROMPT_TEMPLATES = [
+
+  { label: 'Doctor', icon: '🩺', text: 'A doctor in a white coat with stethoscope, holding a clipboard, confident pose' },
+
+  { label: 'Dentist', icon: '🦷', text: 'A dentist in white coat holding a giant tooth model, fun cheerful pose' },
+
+  { label: 'Chef', icon: '👨‍🍳', text: 'A chef in white uniform and hat, holding a wooden spoon and a pot, happy pose' },
+
+  { label: 'Musician', icon: '🎸', text: 'A musician holding an acoustic guitar, playing with passion, casual clothes' },
+
+  { label: 'Gamer', icon: '🎮', text: 'A gamer with headphones, holding a game controller, excited expression' },
+
+  { label: 'Teacher', icon: '👩‍🏫', text: 'A teacher holding a book and pointer, standing next to a small blackboard' },
+
+  { label: 'Nurse', icon: '💉', text: 'A nurse in scrubs holding a medical chart, warm friendly smile' },
+
+  { label: 'Engineer', icon: '👷', text: 'An engineer with hard hat, holding a rolled blueprint and wrench' },
+
+  { label: 'Athlete', icon: '⚽', text: 'An athlete in sports jersey, holding a soccer ball, dynamic pose' },
+
+  { label: 'Mechanic', icon: '🔧', text: 'A mechanic with tool belt, holding a giant wrench over shoulder' },
+
+];
+
+
+
+const ADMIN_PASSWORD = 'grafizm2026';
+
+
+
+// ============= PLACEHOLDER SVG GENERATOR =============
+
+const generatePlaceholderSVG = (seed) => {
+
+  const rand = (i) => { const s = Math.sin(seed * 9999 + i * 7) * 10000; return s - Math.floor(s); };
+
+  const shirts = ['#e07856','#1e3a5f','#d4a574','#2d5282','#f4a07e','#8b5a3c'];
+
+  const pants = ['#1e3a5f','#0f2340','#4a5568','#2d3748','#5a4632'];
+
+  const skins = ['#f4a07e','#e8b894','#d4a074','#c8956d','#f2d2b3'];
+
+  const hairs = ['#2a1810','#8b5a3c','#d4a574','#4a3020','#3a2418'];
+
+  const shirt = shirts[Math.floor(rand(1)*shirts.length)];
+
+  const pant = pants[Math.floor(rand(2)*pants.length)];
+
+  const skin = skins[Math.floor(rand(3)*skins.length)];
+
+  const hair = hairs[Math.floor(rand(8)*hairs.length)];
+
+  const hasGlasses = rand(5) > 0.5;
+
+  const hasHat = rand(6) > 0.6;
+
+  const propType = Math.floor(rand(7) * 4);
+
+  
+
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" width="200" height="300"><rect width="200" height="300" fill="#faf7f2"/><ellipse cx="100" cy="55" rx="42" ry="45" fill="${skin}"/><path d="M 60 35 Q 65 20 85 15 Q 100 10 115 15 Q 135 20 140 35 Q 138 25 128 22 Q 118 18 110 20 Q 100 17 90 20 Q 80 18 72 22 Q 62 25 60 35 Z" fill="${hair}"/>${hasHat?`<path d="M 55 30 L 145 30 L 140 15 L 60 15 Z" fill="#1e3a5f"/>`:''}${hasGlasses?`<circle cx="85" cy="52" r="10" fill="white" stroke="#2a2a2a" stroke-width="2"/><circle cx="115" cy="52" r="10" fill="white" stroke="#2a2a2a" stroke-width="2"/><line x1="95" y1="52" x2="105" y2="52" stroke="#2a2a2a" stroke-width="2"/><circle cx="85" cy="53" r="2.5" fill="#2a2a2a"/><circle cx="115" cy="53" r="2.5" fill="#2a2a2a"/>`:`<ellipse cx="85" cy="52" rx="4" ry="5" fill="white"/><ellipse cx="115" cy="52" rx="4" ry="5" fill="white"/><circle cx="85" cy="53" r="2.5" fill="#2a2a2a"/><circle cx="115" cy="53" r="2.5" fill="#2a2a2a"/>`}<path d="M 78 43 Q 85 40 92 43" stroke="#2a2a2a" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M 108 43 Q 115 40 122 43" stroke="#2a2a2a" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M 100 58 Q 98 65 100 70 Q 102 65 100 58" fill="${skin}" stroke="#c08868" stroke-width="0.8"/><path d="M 85 80 Q 100 90 115 80" stroke="#2a2a2a" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M 87 81 Q 100 87 113 81 L 113 82 Q 100 86 87 82 Z" fill="white"/><circle cx="75" cy="65" r="5" fill="#e07856" opacity="0.3"/><circle cx="125" cy="65" r="5" fill="#e07856" opacity="0.3"/><rect x="92" y="95" width="16" height="12" fill="${skin}"/><path d="M 70 107 L 130 107 L 135 180 L 65 180 Z" fill="${shirt}"/><path d="M 70 107 L 130 107 L 128 115 L 72 115 Z" fill="rgba(0,0,0,0.1)"/><rect x="58" y="110" width="14" height="60" fill="${shirt}" rx="6"/><rect x="128" y="110" width="14" height="60" fill="${shirt}" rx="6"/><circle cx="65" cy="175" r="7" fill="${skin}"/><circle cx="135" cy="175" r="7" fill="${skin}"/>${propType===0?`<rect x="125" y="165" width="25" height="18" fill="#8b5a3c" stroke="#2a2a2a" stroke-width="1"/><line x1="130" y1="170" x2="145" y2="170" stroke="white" stroke-width="0.8"/><line x1="130" y1="174" x2="145" y2="174" stroke="white" stroke-width="0.8"/>`:''}${propType===1?`<rect x="52" y="168" width="4" height="20" fill="#888"/><rect x="48" y="185" width="12" height="6" fill="#555"/>`:''}${propType===3?`<rect x="50" y="170" width="20" height="15" fill="#4a3020" rx="1"/><rect x="56" y="168" width="8" height="3" fill="#4a3020"/>`:''}<rect x="70" y="180" width="26" height="60" fill="${pant}"/><rect x="104" y="180" width="26" height="60" fill="${pant}"/><ellipse cx="83" cy="248" rx="15" ry="6" fill="#2a1810"/><ellipse cx="117" cy="248" rx="15" ry="6" fill="#2a1810"/></svg>`;
+
+  return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg)));
+
+};
+
+
+
+// ============= UTILITIES =============
+
+const formatPrice = (p) => `$${p.toFixed(2)}`;
+
+const formatDate = (iso) => new Date(iso).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+const shortId = (id) => id.slice(-8).toUpperCase();
+
+
+
+const validateImage = (file) => new Promise((resolve, reject) => {
+
+  if (!file.type.startsWith('image/')) return reject('Please upload an image file (JPG, PNG).');
+
+  if (file.size > 10 * 1024 * 1024) return reject('Image must be smaller than 10MB.');
+
+  const img = new Image();
+
+  const url = URL.createObjectURL(file);
+
+  img.onload = () => {
+
+    URL.revokeObjectURL(url);
+
+    if (img.width < 500 || img.height < 500) return reject(`Resolution too low (${img.width}×${img.height}px). Please upload at least 500×500px for best results.`);
+
+    const reader = new FileReader();
+
+    reader.onload = (e) => resolve({ dataUrl: e.target.result, width: img.width, height: img.height, size: file.size, name: file.name });
+
+    reader.readAsDataURL(file);
+
+  };
+
+  img.onerror = () => reject('Could not load the image. Please try another file.');
+
+  img.src = url;
+
+});
+
+
+
+// ============= LOGO =============
+
+const Logo = ({ size = 'md', color = 'navy' }) => {
+
+  const sizes = { sm: 'h-8', md: 'h-10', lg: 'h-14' };
+
+  const textSize = { sm: 'text-lg', md: 'text-2xl', lg: 'text-3xl' };
+
+  const colorVal = color === 'navy' ? '#1e3a5f' : '#faf7f2';
+
+  return (
+
+    <div className="flex items-center gap-3">
+
+      <svg viewBox="0 0 60 80" className={sizes[size]} fill="none" stroke={colorVal} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+
+        <circle cx="30" cy="12" r="6"/>
+
+        <path d="M20 22 Q18 35 22 50 L18 70 L28 72"/>
+
+        <path d="M38 22 Q42 35 38 50 L42 70 L32 72"/>
+
+        <path d="M22 28 Q30 32 38 28"/>
+
+        <line x1="15" y1="75" x2="45" y2="75"/>
+
+      </svg>
+
+      <span className={`font-display font-light tracking-widest ${textSize[size]}`} style={{color: colorVal, letterSpacing: '0.2em'}}>FIGURIST</span>
+
+    </div>
+
+  );
+
+};
+
+
+
+// ============= HEADER =============
+
+const Header = ({ onAdminClick }) => (
+
+  <header className="bg-cream border-b border-soft sticky top-0 z-40 backdrop-blur-sm bg-opacity-90">
+
+    <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
+
+      <a href="#" onClick={(e) => { e.preventDefault(); window.location.reload(); }}><Logo size="md" /></a>
+
+      <div className="flex items-center gap-4">
+
+        <div className="hidden md:flex items-center gap-2 text-sm text-navy">
+
+          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+
+          <span className="font-medium">AI Studio Online</span>
+
+        </div>
+
+        <button onClick={onAdminClick} className="text-xs text-gray-400 hover:text-navy transition-colors" title="Admin access">• admin</button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+);
+
+
+
+// ============= LANDING =============
+
+const Landing = ({ onStart }) => (
+
+  <div className="hero-gradient min-h-[85vh] relative overflow-hidden">
+
+    <div className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 relative">
+
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+
+        <div className="fade-in-up">
+
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-soft mb-6">
+
+            <span className="text-xs font-semibold tracking-widest text-coral uppercase">AI-Powered Design</span>
+
+            <span className="text-navy">✦</span>
+
+          </div>
+
+          <h1 className="font-display font-light text-5xl md:text-7xl leading-[1.05] text-navy mb-6">
+
+            You,<br/><span className="italic">immortalized</span><br/>in acrylic.
+
+          </h1>
+
+          <p className="text-lg text-gray-600 mb-8 max-w-md leading-relaxed">
+
+            Upload a photo. Describe your dream figure. Our AI draws it. We laser-cut it and ship a custom caricature to your door.
+
+          </p>
+
+          <div className="flex flex-wrap gap-4 mb-10">
+
+            <button onClick={onStart} className="btn-coral px-8 py-4 rounded-full font-semibold text-lg flex items-center gap-2">Create Your Figure<span>→</span></button>
+
+            <a href="#how" className="btn-outline px-8 py-4 rounded-full font-semibold">How it works</a>
+
+          </div>
+
+          <div className="flex items-center gap-6 text-sm text-gray-500">
+
+            <div className="flex items-center gap-2"><span className="text-coral">★★★★★</span><span>Etsy verified</span></div>
+
+            <div>🚚 Ships worldwide</div>
+
+          </div>
+
+        </div>
+
+        <div className="relative">
+
+          <div className="relative aspect-square max-w-md mx-auto">
+
+            <div className="absolute inset-0 rounded-full bg-cream-warm"></div>
+
+            <div className="absolute inset-8 rounded-full border-2 border-dashed border-coral opacity-30"></div>
+
+            <div className="absolute top-8 left-8 w-24 h-32 bg-white rounded-lg shadow-lg overflow-hidden border-4 border-white transform -rotate-6">
+
+              <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+
+                <svg viewBox="0 0 100 130" className="w-full h-full"><circle cx="50" cy="45" r="22" fill="#d4a574" opacity="0.6"/><rect x="25" y="68" width="50" height="55" fill="#d4a574" opacity="0.4" rx="8"/></svg>
+
+              </div>
+
+              <div className="absolute bottom-1 left-0 right-0 text-[10px] text-center font-semibold text-gray-500">PHOTO</div>
+
+            </div>
+
+            <div className="absolute top-12 right-8 w-40 h-52 flex items-center justify-center">
+
+              <img src={generatePlaceholderSVG(42)} alt="Figure preview" className="w-full h-full object-contain drop-shadow-2xl" />
+
+            </div>
+
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl text-coral font-light">→</div>
+
+            <div className="absolute -bottom-4 -right-4 bg-navy text-cream px-4 py-3 rounded-full font-display italic text-sm shadow-xl transform rotate-6">100% Custom</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div id="how" className="mt-24 md:mt-32">
+
+        <div className="text-center mb-12">
+
+          <p className="text-xs font-bold tracking-widest text-coral uppercase mb-3">The Process</p>
+
+          <h2 className="font-display text-4xl md:text-5xl text-navy">Four steps to your figure</h2>
+
+        </div>
+
+        <div className="grid md:grid-cols-4 gap-6">
+
+          {[{n:'01',t:'Upload',d:'A clear headshot of you or someone special'},{n:'02',t:'Describe',d:'Tell our AI the scene you imagine'},{n:'03',t:'Choose',d:'Pick your favorite from 4 AI designs'},{n:'04',t:'Receive',d:'We cut, print and ship to your door'}].map((s, i) => (
+
+            <div key={i} className="card-premium p-6 relative">
+
+              <div className="font-display text-5xl text-coral opacity-30 font-light">{s.n}</div>
+
+              <h3 className="font-display text-2xl text-navy mt-2 mb-2">{s.t}</h3>
+
+              <p className="text-gray-600 text-sm">{s.d}</p>
+
+            </div>
+
+          ))}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+);
+
+
+
+// ============= STEP INDICATOR =============
+
+const StepIndicator = ({ currentStep }) => {
+
+  const labels = ['Photo', 'Describe', 'Design', 'Variant', 'Checkout'];
+
+  return (
+
+    <div className="max-w-3xl mx-auto px-4 py-8">
+
+      <div className="flex items-center justify-between relative">
+
+        <div className="absolute top-[18px] left-0 right-0 h-[2px]" style={{background:'var(--border-soft)'}}></div>
+
+        <div className="absolute top-[18px] left-0 h-[2px] transition-all duration-500" style={{background:'var(--coral)', width:`${((currentStep-1)/4)*100}%`}}></div>
+
+        {labels.map((label, i) => {
+
+          const stepNum = i + 1;
+
+          const state = stepNum < currentStep ? 'done' : stepNum === currentStep ? 'active' : 'pending';
+
+          return (
+
+            <div key={i} className="flex flex-col items-center gap-2 relative z-10">
+
+              <div className={`step-dot ${state}`}>{state === 'done' ? '✓' : stepNum}</div>
+
+              <span className={`text-xs font-semibold ${state === 'active' ? 'text-navy' : 'text-gray-400'}`}>{label}</span>
+
+            </div>
+
+          );
+
+        })}
+
+      </div>
+
+    </div>
+
+  );
+
+};
+
+
+
+// ============= STEP 1: UPLOAD =============
+
+const Step1Upload = ({ onNext, initialPhoto }) => {
+
+  const [photo, setPhoto] = useState(initialPhoto);
+
+  const [error, setError] = useState('');
+
+  const [loading, setLoading] = useState(false);
+
+  const [dragOver, setDragOver] = useState(false);
+
+  const inputRef = useRef(null);
+
+
+
+  const handleFile = async (file) => {
+
+    setError(''); setLoading(true);
+
+    try { setPhoto(await validateImage(file)); }
+
+    catch (e) { setError(typeof e === 'string' ? e : 'Upload failed.'); }
+
+    setLoading(false);
+
+  };
+
+
+
+  const onDrop = (e) => {
+
+    e.preventDefault(); setDragOver(false);
+
+    if (e.dataTransfer.files?.[0]) handleFile(e.dataTransfer.files[0]);
+
+  };
+
+
+
+  return (
+
+    <div className="max-w-3xl mx-auto px-4 pb-12">
+
+      <div className="text-center mb-8">
+
+        <p className="text-xs font-bold tracking-widest text-coral uppercase mb-2">Step 1 of 5</p>
+
+        <h2 className="font-display text-4xl md:text-5xl text-navy mb-3">Upload a headshot</h2>
+
+        <p className="text-gray-600">A clear, front-facing photo works best. Only the head will be used.</p>
+
+      </div>
+
+      {!photo ? (
+
+        <>
+
+          <div className={`upload-zone ${dragOver ? 'drag-over' : ''} rounded-2xl p-12 text-center cursor-pointer`}
+
+            onClick={() => inputRef.current?.click()}
+
+            onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+
+            onDragLeave={() => setDragOver(false)}
+
+            onDrop={onDrop}>
+
+            <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-cream-warm flex items-center justify-center">
+
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1e3a5f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+
+                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+
+              </svg>
+
+            </div>
+
+            <h3 className="font-display text-2xl text-navy mb-2">{loading ? 'Checking your photo...' : 'Drop your photo here'}</h3>
+
+            <p className="text-gray-500 mb-4">or click to browse</p>
+
+            <p className="text-xs text-gray-400">JPG or PNG · Min 500×500px · Max 10MB</p>
+
+            <input ref={inputRef} type="file" accept="image/*" className="hidden" onChange={(e) => e.target.files?.[0] && handleFile(e.target.files[0])} />
+
+          </div>
+
+          <div className="mt-8 grid md:grid-cols-3 gap-4">
+
+            {[{icon:'✓',title:'Front-facing',d:'Look into the camera'},{icon:'☀',title:'Well-lit',d:'Natural light works best'},{icon:'◉',title:'Head only',d:'Face clearly visible'}].map((tip, i) => (
+
+              <div key={i} className="bg-white border border-soft rounded-xl p-4 text-center">
+
+                <div className="text-2xl text-coral mb-1">{tip.icon}</div>
+
+                <div className="font-semibold text-navy text-sm">{tip.title}</div>
+
+                <div className="text-xs text-gray-500 mt-1">{tip.d}</div>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </>
+
+      ) : (
+
+        <div className="bg-white rounded-2xl border border-soft p-8">
+
+          <div className="flex flex-col md:flex-row gap-6 items-center">
+
+            <img src={photo.dataUrl} alt="" className="w-48 h-48 object-cover rounded-xl shadow-md" />
+
+            <div className="flex-1 text-center md:text-left">
+
+              <h3 className="font-display text-2xl text-navy mb-2">Photo looks great!</h3>
+
+              <p className="text-gray-600 text-sm mb-1">{photo.width} × {photo.height} pixels</p>
+
+              <p className="text-gray-500 text-xs mb-4">{photo.name}</p>
+
+              <button onClick={() => setPhoto(null)} className="btn-outline px-4 py-2 rounded-full text-sm">Change photo</button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      )}
+
+      {error && <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">⚠ {error}</div>}
+
+      <div className="mt-8 flex justify-end">
+
+        <button onClick={() => photo && onNext(photo)} disabled={!photo} className="btn-primary px-10 py-4 rounded-full font-semibold flex items-center gap-2">Continue <span>→</span></button>
+
+      </div>
+
+    </div>
+
+  );
+
+};
+
+
+
+// ============= STEP 2: PROMPT =============
+
+const Step2Prompt = ({ onNext, onBack, initialPrompt }) => {
+
+  const [prompt, setPrompt] = useState(initialPrompt || '');
+
+  return (
+
+    <div className="max-w-4xl mx-auto px-4 pb-12">
+
+      <div className="text-center mb-8">
+
+        <p className="text-xs font-bold tracking-widest text-coral uppercase mb-2">Step 2 of 5</p>
+
+        <h2 className="font-display text-4xl md:text-5xl text-navy mb-3">Describe your figure</h2>
+
+        <p className="text-gray-600">Tell us the scene. Profession, clothing, props, pose — the more specific, the better.</p>
+
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6">
+
+        <div className="md:col-span-2">
+
+          <label className="text-xs font-bold tracking-widest text-navy uppercase mb-2 block">Your description</label>
+
+          <textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} maxLength={500} rows={8} placeholder="Example: A happy chef in a white chef uniform and hat, holding a wooden spoon and a steaming pot of pasta, with a big friendly smile..." />
+
+          <div className="flex justify-between mt-2 text-xs text-gray-400">
+
+            <span>Write in English · Be specific</span>
+
+            <span>{prompt.length} / 500</span>
+
+          </div>
+
+          <div className="mt-6 p-4 bg-cream-warm rounded-xl border border-soft">
+
+            <div className="text-xs font-bold text-navy mb-2">💡 Pro tips</div>
+
+            <ul className="text-xs text-gray-600 space-y-1">
+
+              <li>• Mention the profession or hobby (doctor, guitarist, gamer...)</li>
+
+              <li>• Describe clothing and accessories</li>
+
+              <li>• Add props (stethoscope, guitar, ball, tools...)</li>
+
+              <li>• Suggest a funny pose or facial expression</li>
+
+            </ul>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <label className="text-xs font-bold tracking-widest text-navy uppercase mb-2 block">Quick start</label>
+
+          <div className="space-y-2 max-h-[500px] overflow-y-auto scroll-hide pr-1">
+
+            {PROMPT_TEMPLATES.map((t, i) => (
+
+              <button key={i} onClick={() => setPrompt(t.text)} className="w-full text-left p-3 bg-white hover:bg-cream-warm border border-soft rounded-lg transition-colors group">
+
+                <div className="flex items-center gap-2">
+
+                  <span className="text-xl">{t.icon}</span>
+
+                  <span className="font-semibold text-navy text-sm group-hover:text-coral">{t.label}</span>
+
+                </div>
+
+                <p className="text-xs text-gray-500 mt-1 line-clamp-2">{t.text}</p>
+
+              </button>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div className="mt-8 flex justify-between">
+
+        <button onClick={onBack} className="btn-outline px-6 py-3 rounded-full">← Back</button>
+
+        <button onClick={() => onNext(prompt)} disabled={prompt.trim().length < 10} className="btn-primary px-10 py-4 rounded-full font-semibold">Generate with AI ✨</button>
+
+      </div>
+
+    </div>
+
+  );
+
+};
+
+
+
+// ============= STEP 3: GENERATE =============
+
+const Step3Generate = ({ onNext, onBack, aiResults, onGenerate, regensLeft, generating }) => {
+
+  const [selected, setSelected] = useState(null);
+
+  useEffect(() => { if (!aiResults && !generating) onGenerate(); }, []);
+
+  return (
+
+    <div className="max-w-5xl mx-auto px-4 pb-12">
+
+      <div className="text-center mb-8">
+
+        <p className="text-xs font-bold tracking-widest text-coral uppercase mb-2">Step 3 of 5</p>
+
+        <h2 className="font-display text-4xl md:text-5xl text-navy mb-3">{generating ? 'Creating your figures...' : 'Pick your favorite'}</h2>
+
+        <p className="text-gray-600">{generating ? 'Our AI is drawing 4 unique versions — this takes about 30 seconds.' : 'Choose the one you love most, or regenerate for new options.'}</p>
+
+      </div>
+
+      {generating ? (
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+          {[0,1,2,3].map(i => <div key={i} className="shimmer rounded-xl aspect-[2/3]"></div>)}
+
+          <div className="col-span-2 md:col-span-4 text-center mt-4">
+
+            <div className="inline-flex items-center gap-2 text-navy">
+
+              <span className="dot-1 w-2 h-2 bg-coral rounded-full inline-block"></span>
+
+              <span className="dot-2 w-2 h-2 bg-coral rounded-full inline-block"></span>
+
+              <span className="dot-3 w-2 h-2 bg-coral rounded-full inline-block"></span>
+
+              <span className="ml-2 text-sm">Analyzing your photo and drawing...</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      ) : aiResults ? (
+
+        <>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+
+            {aiResults.map((img, i) => (
+
+              <div key={i} onClick={() => setSelected(i)} className={`ai-result ${selected === i ? 'selected' : ''}`}>
+
+                <img src={img} alt={`Option ${i + 1}`} className="w-full aspect-[2/3] object-cover" />
+
+                <div className="p-2 text-center bg-white"><span className="text-xs font-semibold text-navy">Option {i + 1}</span></div>
+
+              </div>
+
+            ))}
+
+          </div>
+
+          <div className="mt-6 p-4 bg-cream-warm rounded-xl border border-soft flex items-center justify-between flex-wrap gap-3">
+
+            <div className="text-sm">
+
+              <span className="font-semibold text-navy">Not quite right?</span>
+
+              <span className="text-gray-600 ml-2">You have {regensLeft} regeneration{regensLeft !== 1 ? 's' : ''} left.</span>
+
+            </div>
+
+            <button onClick={() => { setSelected(null); onGenerate(); }} disabled={regensLeft <= 0} className="btn-outline px-5 py-2 rounded-full text-sm font-semibold">↻ Regenerate all 4</button>
+
+          </div>
+
+        </>
+
+      ) : null}
+
+      <div className="mt-8 flex justify-between">
+
+        <button onClick={onBack} className="btn-outline px-6 py-3 rounded-full">← Back</button>
+
+        <button onClick={() => selected !== null && onNext(aiResults[selected], selected)} disabled={selected === null || generating} className="btn-primary px-10 py-4 rounded-full font-semibold">Use this design →</button>
+
+      </div>
+
+    </div>
+
+  );
+
+};
+
+
+
+// ============= VARIANT ICON =============
+
+const VariantIcon = ({ material, size = 60 }) => {
+
+  if (material === 'wood') return (
+
+    <svg viewBox="0 0 60 80" width={size} height={size * 1.33}>
+
+      <rect x="20" y="10" width="20" height="50" fill="#8b6f47" rx="2"/>
+
+      <rect x="12" y="58" width="36" height="8" fill="#6b5537" rx="1"/>
+
+      <circle cx="30" cy="25" r="6" fill="#d4a574"/>
+
+      <rect x="24" y="32" width="12" height="20" fill="#e07856"/>
+
+    </svg>
+
+  );
+
+  if (material === 'acrylic') return (
+
+    <svg viewBox="0 0 60 80" width={size} height={size * 1.33}>
+
+      <defs><linearGradient id={`ac-${material}`} x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#b8d4e8"/><stop offset="100%" stopColor="#e8f0f7"/></linearGradient></defs>
+
+      <rect x="20" y="10" width="20" height="50" fill={`url(#ac-${material})`} rx="2" opacity="0.7"/>
+
+      <rect x="12" y="58" width="36" height="8" fill="#2a2a2a" rx="1"/>
+
+      <circle cx="30" cy="25" r="6" fill="#f4a07e"/>
+
+      <rect x="24" y="32" width="12" height="20" fill="#1e3a5f"/>
+
+    </svg>
+
+  );
+
+  if (material === 'bundle') return (
+
+    <svg viewBox="0 0 60 80" width={size} height={size * 1.33}>
+
+      <rect x="8" y="30" width="14" height="18" fill="#d4a574" rx="2"/>
+
+      <circle cx="15" cy="25" r="3" fill="#8b6f47"/>
+
+      <rect x="26" y="25" width="12" height="28" fill="#e07856" rx="1"/>
+
+      <circle cx="48" cy="35" r="10" fill="#1e3a5f"/>
+
+      <circle cx="48" cy="35" r="6" fill="#d4a574"/>
+
+    </svg>
+
+  );
+
+  return (
+
+    <svg viewBox="0 0 60 80" width={size} height={size * 1.33}>
+
+      <defs><linearGradient id="ac-fs" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#b8d4e8"/><stop offset="100%" stopColor="#e8f0f7"/></linearGradient></defs>
+
+      <rect x="22" y="10" width="16" height="40" fill="url(#ac-fs)" rx="1" opacity="0.7"/>
+
+      <rect x="5" y="55" width="10" height="12" fill="#d4a574" rx="1"/>
+
+      <rect x="25" y="55" width="10" height="12" fill="#e07856" rx="1"/>
+
+      <circle cx="50" cy="61" r="7" fill="#1e3a5f"/>
+
+    </svg>
+
+  );
+
+};
+
+
+
+// ============= STEP 4: VARIANT =============
+
+const Step4Variant = ({ onNext, onBack, selectedVariant: initialVariant }) => {
+
+  const [selected, setSelected] = useState(initialVariant);
+
+  return (
+
+    <div className="max-w-6xl mx-auto px-4 pb-12">
+
+      <div className="text-center mb-8">
+
+        <p className="text-xs font-bold tracking-widest text-coral uppercase mb-2">Step 4 of 5</p>
+
+        <h2 className="font-display text-4xl md:text-5xl text-navy mb-3">Choose your product</h2>
+
+        <p className="text-gray-600">Premium materials, laser-cut to your figure's exact outline.</p>
+
+      </div>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+        {VARIANTS.map(v => (
+
+          <div key={v.id} onClick={() => setSelected(v)} className={`variant-card p-5 relative ${selected?.id === v.id ? 'selected' : ''}`}>
+
+            {v.featured && <div className="absolute top-2 right-2 bg-coral text-white text-[10px] font-bold px-2 py-1 rounded-full tracking-wider">POPULAR</div>}
+
+            <div className="aspect-square flex items-center justify-center bg-cream-warm rounded-lg mb-4">
+
+              <VariantIcon material={v.material} size={70} />
+
+            </div>
+
+            <div className="text-xs font-bold tracking-widest text-gray-400 uppercase mb-1">{v.material === 'wood' ? 'Wood' : v.material === 'acrylic' ? 'Acrylic' : v.material === 'bundle' ? 'Bundle' : 'Full Set'}</div>
+
+            <h3 className="font-display text-xl text-navy mb-1">{v.name}</h3>
+
+            <p className="text-sm text-gray-500 mb-3">{v.size}</p>
+
+            <div className="flex items-end justify-between">
+
+              <span className="font-display text-2xl text-navy">{formatPrice(v.price)}</span>
+
+              {selected?.id === v.id && <span className="text-coral font-semibold text-sm">Selected</span>}
+
+            </div>
+
+          </div>
+
+        ))}
+
+      </div>
+
+      <div className="mt-8 flex justify-between">
+
+        <button onClick={onBack} className="btn-outline px-6 py-3 rounded-full">← Back</button>
+
+        <button onClick={() => selected && onNext(selected)} disabled={!selected} className="btn-primary px-10 py-4 rounded-full font-semibold">Continue to checkout →</button>
+
+      </div>
+
+    </div>
+
+  );
+
+};
+
+
+
+// ============= STEP 5: CHECKOUT =============
+
+const Step5Checkout = ({ onNext, onBack, variant, selectedImage }) => {
+
+  const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', country: '', city: '', postalCode: '', address: '', notes: '' });
+
+  const [errors, setErrors] = useState({});
+
+  const [submitting, setSubmitting] = useState(false);
+
+
+
+  const update = (k, v) => { setForm({ ...form, [k]: v }); if (errors[k]) setErrors({ ...errors, [k]: null }); };
+
+
+
+  const validate = () => {
+
+    const e = {};
+
+    if (!form.firstName.trim()) e.firstName = 'Required';
+
+    if (!form.lastName.trim()) e.lastName = 'Required';
+
+    if (!form.email.trim() || !/^[^@]+@[^@]+\.[^@]+$/.test(form.email)) e.email = 'Valid email required';
+
+    if (!form.phone.trim()) e.phone = 'Required';
+
+    if (!form.country.trim()) e.country = 'Required';
+
+    if (!form.city.trim()) e.city = 'Required';
+
+    if (!form.postalCode.trim()) e.postalCode = 'Required';
+
+    if (!form.address.trim() || form.address.length < 10) e.address = 'Please enter your full address';
+
+    setErrors(e); return Object.keys(e).length === 0;
+
+  };
+
+
+
+  const submit = async () => {
+
+    if (!validate()) return;
+
+    setSubmitting(true); await onNext(form); setSubmitting(false);
+
+  };
+
+
+
+  return (
+
+    <div className="max-w-5xl mx-auto px-4 pb-12">
+
+      <div className="text-center mb-8">
+
+        <p className="text-xs font-bold tracking-widest text-coral uppercase mb-2">Step 5 of 5</p>
+
+        <h2 className="font-display text-4xl md:text-5xl text-navy mb-3">Almost there!</h2>
+
+        <p className="text-gray-600">Where should we send your figure?</p>
+
+      </div>
+
+      <div className="grid md:grid-cols-3 gap-6">
+
+        <div className="md:col-span-2 space-y-6">
+
+          <div className="bg-white rounded-2xl border border-soft p-6">
+
+            <h3 className="font-display text-xl text-navy mb-4">Contact</h3>
+
+            <div className="grid grid-cols-2 gap-4">
+
+              <div><label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block">First name</label><input type="text" value={form.firstName} onChange={(e) => update('firstName', e.target.value)} />{errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}</div>
+
+              <div><label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block">Last name</label><input type="text" value={form.lastName} onChange={(e) => update('lastName', e.target.value)} />{errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}</div>
+
+              <div><label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block">Email</label><input type="email" value={form.email} onChange={(e) => update('email', e.target.value)} />{errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}</div>
+
+              <div><label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block">Phone</label><input type="tel" value={form.phone} onChange={(e) => update('phone', e.target.value)} placeholder="+1 ..." />{errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}</div>
+
+            </div>
+
+          </div>
+
+          <div className="bg-white rounded-2xl border border-soft p-6">
+
+            <h3 className="font-display text-xl text-navy mb-4">Shipping address</h3>
+
+            <div className="space-y-4">
+
+              <div className="grid grid-cols-2 gap-4">
+
+                <div><label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block">Country</label><input type="text" value={form.country} onChange={(e) => update('country', e.target.value)} placeholder="United States" />{errors.country && <p className="text-red-500 text-xs mt-1">{errors.country}</p>}</div>
+
+                <div><label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block">City</label><input type="text" value={form.city} onChange={(e) => update('city', e.target.value)} />{errors.city && <p className="text-red-500 text-xs mt-1">{errors.city}</p>}</div>
+
+              </div>
+
+              <div><label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block">Postal code</label><input type="text" value={form.postalCode} onChange={(e) => update('postalCode', e.target.value)} />{errors.postalCode && <p className="text-red-500 text-xs mt-1">{errors.postalCode}</p>}</div>
+
+              <div><label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block">Street address</label><textarea rows={3} value={form.address} onChange={(e) => update('address', e.target.value)} placeholder="Street, apartment, building..." />{errors.address && <p className="text-red-500 text-xs mt-1">{errors.address}</p>}</div>
+
+              <div><label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block">Order notes (optional)</label><textarea rows={2} value={form.notes} onChange={(e) => update('notes', e.target.value)} placeholder="Gift wrapping, special requests..." /></div>
+
+            </div>
+
+          </div>
+
+          <div className="bg-white rounded-2xl border border-soft p-6">
+
+            <h3 className="font-display text-xl text-navy mb-4">Payment</h3>
+
+            <div className="bg-cream-warm rounded-xl p-6 text-center border border-dashed border-coral">
+
+              <div className="text-2xl mb-2">🧪</div>
+
+              <p className="font-semibold text-navy mb-1">Demo Mode</p>
+
+              <p className="text-sm text-gray-600">Payment gateway integration comes later. This order will be placed without charging a real card.</p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div className="md:col-span-1">
+
+          <div className="bg-white rounded-2xl border border-soft p-6 sticky top-24">
+
+            <h3 className="font-display text-xl text-navy mb-4">Your order</h3>
+
+            <div className="aspect-[2/3] rounded-lg overflow-hidden mb-4 bg-cream-warm">
+
+              {selectedImage && <img src={selectedImage} alt="Your figure" className="w-full h-full object-cover" />}
+
+            </div>
+
+            <div className="space-y-3 text-sm">
+
+              <div className="flex justify-between"><span className="text-gray-500">Product</span><span className="font-semibold text-navy text-right">{variant?.name}<br/>{variant?.size}</span></div>
+
+              <div className="flex justify-between"><span className="text-gray-500">Quantity</span><span className="font-semibold text-navy">1</span></div>
+
+              <div className="border-t border-soft pt-3 flex justify-between items-end"><span className="text-gray-500">Total</span><span className="font-display text-2xl text-navy">{formatPrice(variant?.price || 0)}</span></div>
+
+            </div>
+
+            <button onClick={submit} disabled={submitting} className="btn-coral w-full mt-6 py-4 rounded-full font-semibold">{submitting ? 'Placing order...' : 'Complete Order 🎉'}</button>
+
+            <p className="text-xs text-gray-400 text-center mt-3">🔒 Your photo and data are kept private</p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div className="mt-8 flex justify-start">
+
+        <button onClick={onBack} className="btn-outline px-6 py-3 rounded-full">← Back</button>
+
+      </div>
+
+    </div>
+
+  );
+
+};
+
+
+
+// ============= SUCCESS =============
+
+const SuccessPage = ({ order, onNew }) => (
+
+  <div className="max-w-2xl mx-auto px-4 py-16 text-center">
+
+    <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-coral flex items-center justify-center text-white text-5xl">✓</div>
+
+    <h1 className="font-display text-5xl text-navy mb-4">Order placed!</h1>
+
+    <p className="text-gray-600 text-lg mb-2">Thank you, <strong>{order.customer.firstName}</strong>!</p>
+
+    <p className="text-gray-500 mb-8">
+
+      Your order <span className="font-mono text-navy font-semibold">#{shortId(order.id)}</span> is now in our queue.
+
+      <br/>We'll review it within 24 hours and send a confirmation to <strong>{order.customer.email}</strong>.
+
+    </p>
+
+    <div className="bg-white rounded-2xl border border-soft p-6 text-left mb-8">
+
+      <h3 className="font-display text-xl text-navy mb-4">What happens next?</h3>
+
+      <ol className="space-y-3 text-sm text-gray-600">
+
+        <li className="flex gap-3"><span className="w-6 h-6 rounded-full bg-cream-warm text-navy font-bold flex items-center justify-center text-xs flex-shrink-0">1</span><span>We review your figure design and confirm the order (within 24h).</span></li>
+
+        <li className="flex gap-3"><span className="w-6 h-6 rounded-full bg-cream-warm text-navy font-bold flex items-center justify-center text-xs flex-shrink-0">2</span><span>We UV-print and laser-cut your {order.variant.name} ({order.variant.size}).</span></li>
+
+        <li className="flex gap-3"><span className="w-6 h-6 rounded-full bg-cream-warm text-navy font-bold flex items-center justify-center text-xs flex-shrink-0">3</span><span>We carefully package and ship it to your address.</span></li>
+
+      </ol>
+
+    </div>
+
+    <button onClick={onNew} className="btn-primary px-8 py-3 rounded-full font-semibold">Create another figure</button>
+
+  </div>
+
+);
+
+
+
+// ============= CUSTOMER FLOW =============
+
+const CustomerFlow = () => {
+
+  const [step, setStep] = useState(0);
+
+  const [photo, setPhoto] = useState(null);
+
+  const [prompt, setPrompt] = useState('');
+
+  const [aiResults, setAiResults] = useState(null);
+
+  const [regensLeft, setRegensLeft] = useState(3);
+
+  const [generating, setGenerating] = useState(false);
+
+  const [hasGenerated, setHasGenerated] = useState(false);
+
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const [selectedImageIdx, setSelectedImageIdx] = useState(null);
+
+  const [variant, setVariant] = useState(null);
+
+  const [completedOrder, setCompletedOrder] = useState(null);
+
+
+
+  const resetAll = () => {
+
+    setStep(0); setPhoto(null); setPrompt(''); setAiResults(null);
+
+    setRegensLeft(3); setSelectedImage(null); setSelectedImageIdx(null);
+
+    setVariant(null); setCompletedOrder(null); setHasGenerated(false);
+
+  };
+
+
+
+  const generateImages = async () => {
+
+    setGenerating(true);
+
+    const base64Image = photo.dataUrl.split(',')[1];
+
+
+
+    try {
+
+      const response = await fetch('/api/gemini', {
+
+        method: 'POST',
+
+        headers: { 'Content-Type': 'application/json' },
+
+        body: JSON.stringify({ prompt, imageBase64: base64Image, masterPrompt: MASTER_PROMPT })
+
+      });
+
+      const data = await response.json();
+
+      
+
+      if (data.images && data.images.length > 0) {
+
+        setAiResults(data.images);
+
+      } else {
+
+        alert('Yapay zeka üretimi başarısız oldu. Lütfen tekrar deneyin.');
+
+      }
+
+    } catch (err) {
+
+      console.error('API Hatası:', err);
+
+      alert('Sunucu bağlantısı kurulamadı.');
+
+    }
+
+
+
+    if (hasGenerated) setRegensLeft(r => r - 1); else setHasGenerated(true);
+
+    setGenerating(false);
+
+  };
+
+
+
+  const placeOrder = async (customerForm) => {
+
+    const order = {
+
+      id: `order_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
+
+      status: 'pending',
+
+      createdAt: new Date().toISOString(),
+
+      customer: customerForm,
+
+      photo: { dataUrl: photo.dataUrl, width: photo.width, height: photo.height, name: photo.name },
+
+      prompt: prompt,
+
+      masterPrompt: MASTER_PROMPT,
+
+      aiResults: aiResults,
+
+      selectedImageIndex: selectedImageIdx,
+
+      selectedImage: selectedImage,
+
+      variant: variant,
+
+      regenerationsUsed: 3 - regensLeft,
+
+    };
+
+    await saveOrder(order);
+
+    setCompletedOrder(order);
+
+    setStep(6);
+
+  };
+
+
+
+  if (step === 0) return <Landing onStart={() => setStep(1)} />;
+
+  if (step === 6 && completedOrder) return <SuccessPage order={completedOrder} onNew={resetAll} />;
+
+
+
+  return (
+
+    <div>
+
+      <StepIndicator currentStep={step} />
+
+      {step === 1 && <Step1Upload initialPhoto={photo} onNext={(p) => { setPhoto(p); setStep(2); }} />}
+
+      {step === 2 && <Step2Prompt initialPrompt={prompt} onNext={(p) => { if (p !== prompt) { setAiResults(null); setHasGenerated(false); } setPrompt(p); setStep(3); }} onBack={() => setStep(1)} />}
+
+      {step === 3 && <Step3Generate aiResults={aiResults} onGenerate={generateImages} generating={generating} regensLeft={regensLeft} onNext={(img, idx) => { setSelectedImage(img); setSelectedImageIdx(idx); setStep(4); }} onBack={() => setStep(2)} />}
+
+      {step === 4 && <Step4Variant selectedVariant={variant} onNext={(v) => { setVariant(v); setStep(5); }} onBack={() => setStep(3)} />}
+
+      {step === 5 && <Step5Checkout variant={variant} selectedImage={selectedImage} onNext={placeOrder} onBack={() => setStep(4)} />}
+
+    </div>
+
+  );
+
+};
+
+
+
+// ============= ADMIN LOGIN =============
+
+const AdminLogin = ({ onSuccess, onCancel }) => {
+
+  const [pw, setPw] = useState('');
+
+  const [err, setErr] = useState('');
+
+  const submit = () => {
+
+    if (pw === ADMIN_PASSWORD) onSuccess();
+
+    else setErr('Incorrect password');
+
+  };
+
+  return (
+
+    <div className="min-h-screen bg-cream flex items-center justify-center px-4">
+
+      <div className="bg-white rounded-2xl border border-soft p-8 max-w-md w-full">
+
+        <div className="text-center mb-6">
+
+          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-navy flex items-center justify-center text-cream text-2xl">🔐</div>
+
+          <h2 className="font-display text-3xl text-navy">Admin Access</h2>
+
+          <p className="text-gray-500 text-sm mt-1">Enter your password to continue</p>
+
+        </div>
+
+        <input type="password" value={pw} onChange={(e) => { setPw(e.target.value); setErr(''); }} onKeyDown={(e) => e.key === 'Enter' && submit()} placeholder="Password" autoFocus />
+
+        {err && <p className="text-red-500 text-xs mt-2">{err}</p>}
+
+        <p className="text-xs text-gray-400 mt-3 mb-4">
+
+          Default password: <code className="bg-cream-warm px-2 py-0.5 rounded">grafizm2026</code><br/>
+
+          <span className="text-[10px]">Change in source code: search for ADMIN_PASSWORD</span>
+
+        </p>
+
+        <div className="flex gap-2">
+
+          <button onClick={onCancel} className="btn-outline flex-1 py-3 rounded-full">Cancel</button>
+
+          <button onClick={submit} className="btn-primary flex-1 py-3 rounded-full font-semibold">Sign in</button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  );
+
+};
+
+
+
+// ============= ORDER DETAIL =============
+
+const OrderDetail = ({ order, onClose, onStatusUpdate }) => {
+
+  const [localOrder, setLocalOrder] = useState(order);
+
+  const [emailSent, setEmailSent] = useState(false);
+
+
+
+  const approve = async () => {
+
+    await onStatusUpdate(order.id, 'approved');
+
+    setLocalOrder({ ...localOrder, status: 'approved' });
+
+    setEmailSent(true);
+
+    setTimeout(() => setEmailSent(false), 4000);
+
+  };
+
+  const markShipped = async () => {
+
+    await onStatusUpdate(order.id, 'shipped');
+
+    setLocalOrder({ ...localOrder, status: 'shipped' });
+
+  };
+
+  const downloadImage = (dataUrl, filename) => {
+
+    const a = document.createElement('a'); a.href = dataUrl; a.download = filename; a.click();
+
+  };
+
+  const printShippingLabel = () => window.print();
+
+
+
+  const sImg = localOrder.selectedImage;
+
+  const origImg = localOrder.photo?.dataUrl;
+
+
+
+  return (
+
+    <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-start justify-center p-4 overflow-y-auto no-print">
+
+      <div className="bg-cream rounded-2xl max-w-5xl w-full my-8">
+
+        <div className="p-6 border-b border-soft flex items-center justify-between sticky top-0 bg-cream z-10 rounded-t-2xl">
+
+          <div>
+
+            <div className="text-xs text-gray-500 mb-1">Order #{shortId(localOrder.id)}</div>
+
+            <h2 className="font-display text-2xl text-navy">{localOrder.customer.firstName} {localOrder.customer.lastName}</h2>
+
+            <div className="mt-1 flex items-center gap-2">
+
+              <span className={`text-xs px-2 py-1 rounded-full font-semibold status-${localOrder.status}`}>{localOrder.status.toUpperCase()}</span>
+
+              <span className="text-xs text-gray-500">{formatDate(localOrder.createdAt)}</span>
+
+            </div>
+
+          </div>
+
+          <button onClick={onClose} className="text-gray-400 hover:text-navy text-3xl leading-none">×</button>
+
+        </div>
+
+
+
+        {emailSent && (
+
+          <div className="mx-6 mt-4 p-3 bg-green-50 border border-green-200 rounded-lg text-sm text-green-800">
+
+            ✓ Email sent to <strong>{localOrder.customer.email}</strong>: "Your order has been approved and is being prepared."
+
+            <span className="block text-xs text-green-600 mt-1">(Demo mode: no real email sent. Integrate SendGrid/Resend to enable.)</span>
+
+          </div>
+
+        )}
+
+
+
+        <div className="p-6 grid md:grid-cols-2 gap-6">
+
+          <div className="space-y-4">
+
+            <div className="bg-white rounded-xl border border-soft p-5">
+
+              <h3 className="font-display text-lg text-navy mb-3">Customer</h3>
+
+              <div className="space-y-2 text-sm">
+
+                <div><span className="text-gray-500">Name:</span> <strong>{localOrder.customer.firstName} {localOrder.customer.lastName}</strong></div>
+
+                <div><span className="text-gray-500">Email:</span> <a href={`mailto:${localOrder.customer.email}`} className="text-coral">{localOrder.customer.email}</a></div>
+
+                <div><span className="text-gray-500">Phone:</span> {localOrder.customer.phone}</div>
+
+              </div>
+
+            </div>
+
+            <div className="bg-white rounded-xl border border-soft p-5">
+
+              <h3 className="font-display text-lg text-navy mb-3">Shipping address</h3>
+
+              <address className="not-italic text-sm text-gray-700 leading-relaxed">
+
+                <strong>{localOrder.customer.firstName} {localOrder.customer.lastName}</strong><br/>
+
+                {localOrder.customer.address}<br/>
+
+                {localOrder.customer.city}, {localOrder.customer.postalCode}<br/>
+
+                {localOrder.customer.country}
+
+              </address>
+
+              {localOrder.customer.notes && (
+
+                <div className="mt-3 pt-3 border-t border-soft text-xs">
+
+                  <span className="font-semibold text-navy">Notes: </span>
+
+                  <span className="text-gray-600">{localOrder.customer.notes}</span>
+
+                </div>
+
+              )}
+
+            </div>
+
+            <div className="bg-white rounded-xl border border-soft p-5">
+
+              <h3 className="font-display text-lg text-navy mb-3">Product</h3>
+
+              <div className="flex justify-between items-center">
+
+                <div>
+
+                  <div className="font-semibold text-navy">{localOrder.variant.name}</div>
+
+                  <div className="text-sm text-gray-500">{localOrder.variant.size}</div>
+
+                </div>
+
+                <div className="font-display text-2xl text-navy">{formatPrice(localOrder.variant.price)}</div>
+
+              </div>
+
+            </div>
+
+            <div className="bg-white rounded-xl border border-soft p-5">
+
+              <h3 className="font-display text-lg text-navy mb-3">Customer description</h3>
+
+              <p className="text-sm text-gray-700 italic bg-cream-warm p-3 rounded-lg">"{localOrder.prompt}"</p>
+
+              <details className="mt-3 text-xs">
+
+                <summary className="cursor-pointer text-gray-500 hover:text-navy">Show full master prompt</summary>
+
+                <pre className="mt-2 p-3 bg-cream-warm rounded-lg text-[10px] text-gray-600 overflow-x-auto whitespace-pre-wrap">{localOrder.masterPrompt}</pre>
+
+              </details>
+
+            </div>
+
+            <div className="bg-white rounded-xl border border-soft p-5 text-xs text-gray-500 space-y-1">
+
+              <div className="flex justify-between"><span>Regenerations used:</span><span className="text-navy font-semibold">{localOrder.regenerationsUsed} / 3</span></div>
+
+              <div className="flex justify-between"><span>Selected option:</span><span className="text-navy font-semibold">#{localOrder.selectedImageIndex + 1} of 4</span></div>
+
+            </div>
+
+          </div>
+
+
+
+          <div className="space-y-4">
+
+            <div className="bg-white rounded-xl border border-soft p-5">
+
+              <div className="flex justify-between items-center mb-3">
+
+                <h3 className="font-display text-lg text-navy">Original photo</h3>
+
+                <button onClick={() => downloadImage(origImg, `${shortId(localOrder.id)}-original.jpg`)} className="text-xs text-coral hover:underline font-semibold">↓ Download</button>
+
+              </div>
+
+              {origImg && <img src={origImg} alt="Original" className="w-full rounded-lg" />}
+
+              <p className="text-xs text-gray-500 mt-2">{localOrder.photo?.width} × {localOrder.photo?.height}px</p>
+
+            </div>
+
+            <div className="bg-white rounded-xl border-2 border-coral p-5 shadow-md">
+
+              <div className="flex justify-between items-center mb-3">
+
+                <h3 className="font-display text-lg text-navy">✨ Final design</h3>
+
+                <button onClick={() => downloadImage(sImg, `${shortId(localOrder.id)}-PRINT-READY.png`)} className="btn-coral px-3 py-1 rounded-full text-xs font-semibold">↓ Download print file</button>
+
+              </div>
+
+              {sImg && <img src={sImg} alt="Selected design" className="w-full rounded-lg" />}
+
+              <p className="text-xs text-gray-500 mt-2">💡 Use this as your UV-print master. When Gemini API is connected, it returns 2000×2000 PNG automatically.</p>
+
+            </div>
+
+            <div className="bg-white rounded-xl border border-soft p-5">
+
+              <h3 className="font-display text-lg text-navy mb-3">All AI alternatives</h3>
+
+              <div className="grid grid-cols-4 gap-2">
+
+                {localOrder.aiResults?.map((img, i) => (
+
+                  <div key={i} className="relative">
+
+                    <img src={img} alt={`Option ${i + 1}`} className={`w-full aspect-[2/3] object-cover rounded ${i === localOrder.selectedImageIndex ? 'ring-2 ring-coral' : 'opacity-60'}`} />
+
+                    {i === localOrder.selectedImageIndex && <div className="absolute top-1 right-1 bg-coral text-white text-[9px] font-bold px-1.5 py-0.5 rounded">✓</div>}
+
+                  </div>
+
+                ))}
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+        <div className="p-6 border-t border-soft bg-white rounded-b-2xl flex flex-wrap gap-3 justify-between">
+
+          <button onClick={printShippingLabel} className="btn-outline px-6 py-3 rounded-full font-semibold flex items-center gap-2">🖨 Print shipping label</button>
+
+          <div className="flex gap-2">
+
+            {localOrder.status === 'pending' && <button onClick={approve} className="btn-coral px-6 py-3 rounded-full font-semibold">✓ Approve & email customer</button>}
+
+            {localOrder.status === 'approved' && <button onClick={markShipped} className="btn-primary px-6 py-3 rounded-full font-semibold">📦 Mark as shipped</button>}
+
+            {localOrder.status === 'shipped' && <span className="px-6 py-3 rounded-full bg-green-50 text-green-700 font-semibold text-sm">✓ Order completed</span>}
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <div className="print-label hidden">
+
+        <div style={{padding: '20mm', fontFamily: 'Arial, sans-serif', fontSize: '14pt'}}>
+
+          <div style={{borderBottom: '2px solid #000', paddingBottom: '10mm', marginBottom: '10mm'}}>
+
+            <h1 style={{fontSize: '24pt', margin: 0}}>FIGURIST</h1>
+
+            <p style={{fontSize: '10pt', margin: '2mm 0 0 0'}}>Custom Figures · Made in Türkiye</p>
+
+          </div>
+
+          <div style={{marginBottom: '10mm'}}>
+
+            <p style={{fontSize: '10pt', margin: 0}}>ORDER</p>
+
+            <p style={{fontSize: '18pt', fontWeight: 'bold', margin: '2mm 0'}}>#{shortId(localOrder.id)}</p>
+
+          </div>
+
+          <div style={{padding: '10mm', border: '2px solid #000'}}>
+
+            <p style={{fontSize: '10pt', margin: 0, textTransform: 'uppercase'}}>Ship to:</p>
+
+            <p style={{fontSize: '16pt', fontWeight: 'bold', margin: '3mm 0 2mm 0'}}>{localOrder.customer.firstName} {localOrder.customer.lastName}</p>
+
+            <p style={{fontSize: '12pt', margin: 0, lineHeight: '1.6'}}>
+
+              {localOrder.customer.address}<br/>
+
+              {localOrder.customer.city}, {localOrder.customer.postalCode}<br/>
+
+              <strong>{localOrder.customer.country}</strong>
+
+            </p>
+
+            <p style={{fontSize: '10pt', margin: '5mm 0 0 0'}}>Phone: {localOrder.customer.phone}</p>
+
+          </div>
+
+          <div style={{marginTop: '10mm', fontSize: '10pt'}}>
+
+            <p><strong>Product:</strong> {localOrder.variant.name} — {localOrder.variant.size}</p>
+
+            <p><strong>Order date:</strong> {formatDate(localOrder.createdAt)}</p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  );
+
+};
+
+
+
+// ============= ADMIN PANEL =============
+
+const AdminPanel = ({ onExit }) => {
+
+  const [orders, setOrders] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+
+  const [filter, setFilter] = useState('all');
+
+  const [selectedOrder, setSelectedOrder] = useState(null);
+
+  const [search, setSearch] = useState('');
+
+
+
+  const refresh = async () => {
+
+    setLoading(true);
+
+    setOrders(await loadAllOrders());
+
+    setLoading(false);
+
+  };
+
+
+
+  useEffect(() => { refresh(); }, []);
+
+
+
+  const handleStatusUpdate = async (orderId, status) => {
+
+    await updateOrderStatus(orderId, status);
+
+    await refresh();
+
+  };
+
+
+
+  const filtered = orders.filter(o => {
+
+    if (filter !== 'all' && o.status !== filter) return false;
+
+    if (search) {
+
+      const s = search.toLowerCase();
+
+      return o.customer.firstName.toLowerCase().includes(s) ||
+
+             o.customer.lastName.toLowerCase().includes(s) ||
+
+             o.customer.email.toLowerCase().includes(s) ||
+
+             shortId(o.id).toLowerCase().includes(s);
+
+    }
+
+    return true;
+
+  });
+
+
+
+  const stats = {
+
+    total: orders.length,
+
+    pending: orders.filter(o => o.status === 'pending').length,
+
+    approved: orders.filter(o => o.status === 'approved').length,
+
+    shipped: orders.filter(o => o.status === 'shipped').length,
+
+    revenue: orders.reduce((sum, o) => sum + (o.variant?.price || 0), 0),
+
+  };
+
+
+
+  return (
+
+    <div className="min-h-screen bg-cream">
+
+      <div className="max-w-7xl mx-auto px-4 md:px-8 py-6">
+
+        <div className="flex items-center justify-between mb-6">
+
+          <div>
+
+            <p className="text-xs font-bold tracking-widest text-coral uppercase">Admin Dashboard</p>
+
+            <h1 className="font-display text-3xl text-navy">Orders</h1>
+
+          </div>
+
+          <div className="flex gap-2">
+
+            <button onClick={refresh} className="btn-outline px-4 py-2 rounded-full text-sm">↻ Refresh</button>
+
+            <button onClick={onExit} className="btn-primary px-4 py-2 rounded-full text-sm">Exit admin</button>
+
+          </div>
+
+        </div>
+
+
+
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
+
+          {[
+
+            { label: 'Total orders', value: stats.total, color: 'text-navy' },
+
+            { label: 'Pending', value: stats.pending, color: 'text-yellow-600' },
+
+            { label: 'Approved', value: stats.approved, color: 'text-green-600' },
+
+            { label: 'Shipped', value: stats.shipped, color: 'text-blue-600' },
+
+            { label: 'Revenue', value: formatPrice(stats.revenue), color: 'text-coral' },
+
+          ].map((s, i) => (
+
+            <div key={i} className="bg-white rounded-xl border border-soft p-4">
+
+              <div className="text-xs text-gray-500 uppercase tracking-wide font-semibold">{s.label}</div>
+
+              <div className={`font-display text-3xl ${s.color} mt-1`}>{s.value}</div>
+
+            </div>
+
+          ))}
+
+        </div>
+
+
+
+        <div className="bg-white rounded-xl border border-soft p-4 mb-4 flex flex-wrap gap-3 items-center">
+
+          <div className="flex gap-2">
+
+            {['all', 'pending', 'approved', 'shipped'].map(f => (
+
+              <button key={f} onClick={() => setFilter(f)} className={`px-4 py-2 rounded-full text-sm font-semibold capitalize transition ${filter === f ? 'bg-navy text-cream' : 'bg-cream-warm text-navy hover:bg-coral hover:text-white'}`}>
+
+                {f} {f !== 'all' && `(${stats[f]})`}
+
+              </button>
+
+            ))}
+
+          </div>
+
+          <input type="text" placeholder="Search by name, email, order ID..." value={search} onChange={(e) => setSearch(e.target.value)} className="flex-1 min-w-[200px] max-w-md" />
+
+        </div>
+
+
+
+        <div className="bg-white rounded-xl border border-soft overflow-hidden">
+
+          {loading ? (
+
+            <div className="p-12 text-center text-gray-500">Loading orders...</div>
+
+          ) : filtered.length === 0 ? (
+
+            <div className="p-12 text-center text-gray-500">
+
+              {orders.length === 0 ? (
+
+                <><div className="text-4xl mb-2">📦</div><p className="font-display text-xl text-navy mb-1">No orders yet</p><p className="text-sm">Orders placed by customers will appear here.</p></>
+
+              ) : 'No orders match your filter.'}
+
+            </div>
+
+          ) : (
+
+            <div className="overflow-x-auto">
+
+              <table className="w-full text-sm">
+
+                <thead className="bg-cream-warm">
+
+                  <tr className="text-left text-xs font-bold text-navy uppercase tracking-wide">
+
+                    <th className="px-4 py-3">Preview</th>
+
+                    <th className="px-4 py-3">Order</th>
+
+                    <th className="px-4 py-3">Customer</th>
+
+                    <th className="px-4 py-3">Product</th>
+
+                    <th className="px-4 py-3">Date</th>
+
+                    <th className="px-4 py-3">Status</th>
+
+                    <th className="px-4 py-3">Total</th>
+
+                    <th className="px-4 py-3"></th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody>
+
+                  {filtered.map(o => (
+
+                    <tr key={o.id} className="admin-row border-t border-soft cursor-pointer" onClick={() => setSelectedOrder(o)}>
+
+                      <td className="px-4 py-3"><img src={o.selectedImage} alt="" className="w-12 h-16 object-cover rounded" /></td>
+
+                      <td className="px-4 py-3 font-mono text-xs text-navy">#{shortId(o.id)}</td>
+
+                      <td className="px-4 py-3">
+
+                        <div className="font-semibold text-navy">{o.customer.firstName} {o.customer.lastName}</div>
+
+                        <div className="text-xs text-gray-500">{o.customer.email}</div>
+
+                      </td>
+
+                      <td className="px-4 py-3">
+
+                        <div className="font-semibold text-navy">{o.variant.name}</div>
+
+                        <div className="text-xs text-gray-500">{o.variant.size}</div>
+
+                      </td>
+
+                      <td className="px-4 py-3 text-xs text-gray-600">{formatDate(o.createdAt)}</td>
+
+                      <td className="px-4 py-3"><span className={`text-xs px-2 py-1 rounded-full font-semibold status-${o.status}`}>{o.status.toUpperCase()}</span></td>
+
+                      <td className="px-4 py-3 font-semibold text-navy">{formatPrice(o.variant.price)}</td>
+
+                      <td className="px-4 py-3 text-right"><span className="text-coral text-xs font-semibold">View →</span></td>
+
+                    </tr>
+
+                  ))}
+
+                </tbody>
+
+              </table>
+
+            </div>
+
+          )}
+
+        </div>
+
+        <p className="text-center text-xs text-gray-400 mt-6">Orders are saved in Firebase Firestore and visible across sessions.</p>
+
+      </div>
+
+
+
+      {selectedOrder && <OrderDetail order={selectedOrder} onClose={() => setSelectedOrder(null)} onStatusUpdate={handleStatusUpdate} />}
+
+    </div>
+
+  );
+
+};
+
+
+
+// ============= ROOT APP =============
+
+const App = () => {
+
+  const [view, setView] = useState('customer');
+
+
+
+  if (view === 'admin-login') return <AdminLogin onSuccess={() => setView('admin')} onCancel={() => setView('customer')} />;
+
+  if (view === 'admin') return <AdminPanel onExit={() => setView('customer')} />;
+
+
+
+  return (
+
+    <div>
+
+      <Header onAdminClick={() => setView('admin-login')} />
+
+      <CustomerFlow />
+
+      <footer className="py-12 mt-16" style={{background: '#0f2340', color: '#faf7f2'}}>
+
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            <div>
+
+              <Logo size="md" color="cream" />
+
+              <p className="text-sm opacity-70 mt-4 max-w-xs">Custom AI-designed figures, laser-cut and shipped worldwide from Türkiye.</p>
+
+            </div>
+
+            <div>
+
+              <h4 className="font-display text-lg mb-3">Materials</h4>
+
+              <ul className="text-sm space-y-1 opacity-70">
+
+                <li>Laser-cut MDF wood</li>
+
+                <li>Premium acrylic 5mm</li>
+
+                <li>UV-printed full color</li>
+
+              </ul>
+
+            </div>
+
+            <div>
+
+              <h4 className="font-display text-lg mb-3">Support</h4>
+
+              <ul className="text-sm space-y-1 opacity-70">
+
+                <li>Worldwide shipping</li>
+
+                <li>24h order review</li>
+
+                <li>Etsy verified shop</li>
+
+              </ul>
+
+            </div>
+
+          </div>
+
+          <div className="border-t border-white border-opacity-10 mt-8 pt-6 text-center text-xs opacity-50">© 2026 Figurist · Grafizm · Handcrafted with care</div>
+
+        </div>
+
+      </footer>
+
+    </div>
+
+  );
+
+};
+
+
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+</script>
+
+</body>
+
+</html>
