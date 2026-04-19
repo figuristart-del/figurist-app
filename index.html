@@ -1,0 +1,1171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.5">
+  <style type="text/css">
+    body {background-color: #f9f5ef}
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #1f1f1f; -webkit-text-stroke: #1f1f1f; min-height: 14.0px}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; color: #1f1f1f; -webkit-text-stroke: #1f1f1f}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p2"><span class="s1">&lt;html lang="en"&gt;</span></p>
+<p class="p2"><span class="s1">&lt;head&gt;</span></p>
+<p class="p2"><span class="s1">&lt;meta charset="UTF-8" /&gt;</span></p>
+<p class="p2"><span class="s1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;</span></p>
+<p class="p2"><span class="s1">&lt;title&gt;Figurist — Custom AI Figures&lt;/title&gt;</span></p>
+<p class="p2"><span class="s1">&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</span></p>
+<p class="p2"><span class="s1">&lt;link rel="preconnect" href="https://fonts.gstatic.com" crossorigin&gt;</span></p>
+<p class="p2"><span class="s1">&lt;link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&amp;family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"&gt;</span></p>
+<p class="p2"><span class="s1">&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</span></p>
+<p class="p2"><span class="s1">&lt;script src="https://unpkg.com/react@18/umd/react.production.min.js"&gt;&lt;/script&gt;</span></p>
+<p class="p2"><span class="s1">&lt;script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"&gt;&lt;/script&gt;</span></p>
+<p class="p2"><span class="s1">&lt;script src="https://unpkg.com/@babel/standalone/babel.min.js"&gt;&lt;/script&gt;</span></p>
+<p class="p2"><span class="s1">&lt;style&gt;</span></p>
+<p class="p2"><span class="s1">:root{--navy:#1e3a5f;--navy-deep:#0f2340;--navy-light:#2d5282;--cream:#faf7f2;--cream-warm:#f5ede0;--coral:#e07856;--coral-light:#f4a07e;--gold:#d4a574;--charcoal:#2a2a2a;--soft-gray:#6b7280;--border-soft:#e5e0d5}</span></p>
+<p class="p2"><span class="s1">*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}</span></p>
+<p class="p2"><span class="s1">body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--charcoal)}</span></p>
+<p class="p2"><span class="s1">.font-display{font-family:'Fraunces',serif;font-optical-sizing:auto}</span></p>
+<p class="p2"><span class="s1">.bg-navy{background:var(--navy)}.bg-navy-deep{background:var(--navy-deep)}.bg-cream{background:var(--cream)}.bg-cream-warm{background:var(--cream-warm)}.bg-coral{background:var(--coral)}</span></p>
+<p class="p2"><span class="s1">.text-navy{color:var(--navy)}.text-coral{color:var(--coral)}.border-navy{border-color:var(--navy)}.border-soft{border-color:var(--border-soft)}</span></p>
+<p class="p2"><span class="s1">.hero-gradient{background:radial-gradient(ellipse at top left,rgba(224,120,86,.12) 0%,transparent 50%),radial-gradient(ellipse at bottom right,rgba(30,58,95,.08) 0%,transparent 50%),var(--cream)}</span></p>
+<p class="p2"><span class="s1">.btn-primary{background:var(--navy);color:var(--cream);transition:all .3s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}</span></p>
+<p class="p2"><span class="s1">.btn-primary:hover{background:var(--navy-deep);transform:translateY(-2px);box-shadow:0 8px 24px rgba(30,58,95,.25)}</span></p>
+<p class="p2"><span class="s1">.btn-primary:active{transform:translateY(0)}</span></p>
+<p class="p2"><span class="s1">.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}</span></p>
+<p class="p2"><span class="s1">.btn-coral{background:var(--coral);color:white;transition:all .3s}</span></p>
+<p class="p2"><span class="s1">.btn-coral:hover{background:#d16a49;transform:translateY(-2px);box-shadow:0 8px 24px rgba(224,120,86,.3)}</span></p>
+<p class="p2"><span class="s1">.btn-coral:disabled{opacity:.4;cursor:not-allowed;transform:none}</span></p>
+<p class="p2"><span class="s1">.btn-outline{border:1.5px solid var(--navy);color:var(--navy);background:transparent;transition:all .3s}</span></p>
+<p class="p2"><span class="s1">.btn-outline:hover{background:var(--navy);color:var(--cream)}</span></p>
+<p class="p2"><span class="s1">.btn-outline:disabled{opacity:.4;cursor:not-allowed}</span></p>
+<p class="p2"><span class="s1">.card-premium{background:white;border:1px solid var(--border-soft);border-radius:16px;transition:all .3s}</span></p>
+<p class="p2"><span class="s1">.card-premium:hover{border-color:var(--navy);box-shadow:0 12px 32px rgba(30,58,95,.08);transform:translateY(-4px)}</span></p>
+<p class="p2"><span class="s1">.step-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;transition:all .4s cubic-bezier(.4,0,.2,1);border:2px solid var(--border-soft);background:white;color:var(--soft-gray)}</span></p>
+<p class="p2"><span class="s1">.step-dot.active{background:var(--navy);border-color:var(--navy);color:var(--cream);transform:scale(1.1)}</span></p>
+<p class="p2"><span class="s1">.step-dot.done{background:var(--coral);border-color:var(--coral);color:white}</span></p>
+<p class="p2"><span class="s1">.upload-zone{border:2px dashed var(--border-soft);background:rgba(250,247,242,.6);transition:all .3s}</span></p>
+<p class="p2"><span class="s1">.upload-zone:hover,.upload-zone.drag-over{border-color:var(--coral);background:rgba(244,160,126,.08)}</span></p>
+<p class="p2"><span class="s1">.variant-card{cursor:pointer;transition:all .3s;border:2px solid var(--border-soft);background:white;border-radius:12px;overflow:hidden}</span></p>
+<p class="p2"><span class="s1">.variant-card:hover{border-color:var(--navy-light);transform:translateY(-2px)}</span></p>
+<p class="p2"><span class="s1">.variant-card.selected{border-color:var(--coral);background:rgba(244,160,126,.05);box-shadow:0 8px 24px rgba(224,120,86,.15)}</span></p>
+<p class="p2"><span class="s1">.ai-result{cursor:pointer;transition:all .3s;border:3px solid transparent;border-radius:12px;overflow:hidden;position:relative;background:white}</span></p>
+<p class="p2"><span class="s1">.ai-result:hover{transform:scale(1.02)}</span></p>
+<p class="p2"><span class="s1">.ai-result.selected{border-color:var(--coral);box-shadow:0 12px 32px rgba(224,120,86,.25)}</span></p>
+<p class="p2"><span class="s1">.ai-result.selected::after{content:'✓';position:absolute;top:8px;right:8px;background:var(--coral);color:white;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:18px}</span></p>
+<p class="p2"><span class="s1">@keyframes shimmer{0%{background-position:-1000px 0}100%{background-position:1000px 0}}</span></p>
+<p class="p2"><span class="s1">.shimmer{background:linear-gradient(90deg,#f0ebe0 0%,#faf7f2 50%,#f0ebe0 100%);background-size:1000px 100%;animation:shimmer 2s infinite linear}</span></p>
+<p class="p2"><span class="s1">@keyframes fade-in-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}</span></p>
+<p class="p2"><span class="s1">.fade-in-up{animation:fade-in-up .6s cubic-bezier(.4,0,.2,1) forwards}</span></p>
+<p class="p2"><span class="s1">@keyframes pulse-dot{0%,100%{opacity:.4;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}</span></p>
+<p class="p2"><span class="s1">.dot-1{animation:pulse-dot 1.4s infinite}.dot-2{animation:pulse-dot 1.4s infinite;animation-delay:.2s}.dot-3{animation:pulse-dot 1.4s infinite;animation-delay:.4s}</span></p>
+<p class="p2"><span class="s1">input[type="text"],input[type="email"],input[type="tel"],input[type="password"],textarea,select{background:white;border:1.5px solid var(--border-soft);border-radius:10px;padding:12px 16px;font-family:'Inter',sans-serif;transition:all .2s;width:100%;font-size:14px}</span></p>
+<p class="p2"><span class="s1">input:focus,textarea:focus,select:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(30,58,95,.1)}</span></p>
+<p class="p2"><span class="s1">.scroll-hide::-webkit-scrollbar{display:none}.scroll-hide{scrollbar-width:none}</span></p>
+<p class="p2"><span class="s1">.admin-row:hover{background:var(--cream-warm)}</span></p>
+<p class="p2"><span class="s1">.status-pending{background:#fef3c7;color:#92400e}.status-approved{background:#d1fae5;color:#065f46}.status-shipped{background:#dbeafe;color:#1e40af}</span></p>
+<p class="p2"><span class="s1">@media print{body *{visibility:hidden}.print-label,.print-label *{visibility:visible}.print-label{position:absolute;left:0;top:0;width:100%}.no-print{display:none !important}}</span></p>
+<p class="p2"><span class="s1">&lt;/style&gt;</span></p>
+<p class="p2"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p2"><span class="s1">&lt;body&gt;</span></p>
+<p class="p2"><span class="s1">&lt;div id="root"&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1">&lt;script type="text/babel" data-type="module"&gt;</span></p>
+<p class="p2"><span class="s1">const { useState, useEffect, useRef } = React;</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= STORAGE =============</span></p>
+<p class="p2"><span class="s1">import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";</span></p>
+<p class="p2"><span class="s1">import { getFirestore, collection, doc, setDoc, getDocs, updateDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">const firebaseConfig = {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>apiKey: "AIzaSyCE4uTDF2l9FMAJ8Xg2BF08u7eAvQujA8I",</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>authDomain: "figurist-67b22.firebaseapp.com",</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>projectId: "figurist-67b22",</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>storageBucket: "figurist-67b22.firebasestorage.app",</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>messagingSenderId: "700210213365",</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>appId: "1:700210213365:web:ccf2f723fd86a8d51cb0bc"</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">const app = initializeApp(firebaseConfig);</span></p>
+<p class="p2"><span class="s1">const db = getFirestore(app);</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">const saveOrder = async (order) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>try { await setDoc(doc(db, "orders", order.id), order); return true; }<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>catch (e) { console.error("Kayıt hatası: ", e); return false; }</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p2"><span class="s1">const loadAllOrders = async () =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>try {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const querySnapshot = await getDocs(q);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const orders = [];</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>querySnapshot.forEach((doc) =&gt; orders.push(doc.data()));</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>return orders;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>} catch (e) { console.error("Yükleme hatası: ", e); return []; }</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p2"><span class="s1">const updateOrderStatus = async (orderId, status) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>try {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const orderRef = doc(db, "orders", orderId);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const updates = { status: status, updatedAt: new Date().toISOString() };</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (status === 'approved') updates.approvedAt = new Date().toISOString();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (status === 'shipped') updates.shippedAt = new Date().toISOString();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>await updateDoc(orderRef, updates);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>return true;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>} catch (e) { console.error("Güncelleme hatası: ", e); return false; }</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= CONSTANTS =============</span></p>
+<p class="p2"><span class="s1">const VARIANTS = [</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ id: 'sw8', name: 'Standard Wood', size: '8"', price: 39.00, material: 'wood', featured: false },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ id: 'sw12', name: 'Standard Wood', size: '12"', price: 54.01, material: 'wood', featured: true },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ id: 'sw14', name: 'Standard Wood', size: '14"', price: 68.02, material: 'wood', featured: false },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ id: 'bundle', name: '3pc Accessory Bundle', size: 'Keych+Mag+Orn', price: 49.53, material: 'bundle', featured: false },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ id: 'pa8', name: 'Premium Acrylic', size: '8"', price: 68.51, material: 'acrylic', featured: false },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ id: 'pa12', name: 'Premium Acrylic', size: '12"', price: 94.00, material: 'acrylic', featured: true },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ id: 'pa14', name: 'Premium Acrylic', size: '14"', price: 119.00, material: 'acrylic', featured: false },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ id: 'fullset', name: 'Acrylic FULL SET', size: '8" Fig + 3 Acc', price: 98.80, material: 'fullset', featured: true },</span></p>
+<p class="p2"><span class="s1">];</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">const MASTER_PROMPT = `Act as an expert digital illustrator. Create a premium, full-length 2D custom figure tailored for the US and European e-commerce market.</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">The result must be a 100% digital illustration, NOT photorealistic.</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">[CRITICAL DRAWING TECHNIQUE &amp; STYLE]</span></p>
+<p class="p2"><span class="s1">* Unified humorous, semi-realistic caricature style.</span></p>
+<p class="p2"><span class="s1">* Clean, very vibrant, high-impact UV-print-friendly quality.</span></p>
+<p class="p2"><span class="s1">* Use rich saturated colors, strong contrast, and crisp outlines.</span></p>
+<p class="p2"><span class="s1">* Apply glossy highlights, vivid shading, and smooth, lively skin texture appropriate to the ethnicity.</span></p>
+<p class="p2"><span class="s1">* Bright expressive eyes with sharp definition. Teeth must look natural with soft gradients and subtle separation.</span></p>
+<p class="p2"><span class="s1">* Maintain realistic fabric folds, sharp highlights, and clean textures on clothing.</span></p>
+<p class="p2"><span class="s1">* Ultra-sharp, high-resolution output. Pixel-clean edges, no blur or artifacts.</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">[STRICT PROPORTIONS &amp; ANATOMY]</span></p>
+<p class="p2"><span class="s1">* STRICT 30% HEAD RATIO: The total vertical height of the head MUST be exactly 30% of the entire figure's height.<span class="Apple-converted-space"> </span></span></p>
+<p class="p2"><span class="s1">* The body is stylized and smaller relative to the head, adhering strictly to this fixed 30% head proportion. However, the body MUST retain standard adult shapes for limbs (normal arm and leg shapes, no dwarf-like short limbs).</span></p>
+<p class="p2"><span class="s1">* Any props held must be scaled approximately 30% larger than real-life size.</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">[DYNAMIC SKIN TONE MATCHING (CRITICAL)]</span></p>
+<p class="p2"><span class="s1">* HEAD DICTATES BODY COLOR: The AI MUST analyze the specific skin tone, ethnicity, undertones, and melanin level of the uploaded HEAD REFERENCE. This EXACT skin color palette must then be applied uniformly to ALL visible skin areas of the body.</span></p>
+<p class="p2"><span class="s1">* SEAMLESS UNIFORMITY: There must be ZERO difference in hue, saturation, or brightness between the face and the rest of the body. The transition at the neck must be flawless.</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">[LIKENESS &amp; HEAD-BODY CONNECTION]</span></p>
+<p class="p2"><span class="s1">* Preserve the exact facial expression, eye shape, smile, head angle, hairstyle, and unique facial details from the photo. Do NOT generate a generic face.</span></p>
+<p class="p2"><span class="s1">* Place the head naturally onto the body. The neck and throat area MUST be visible, anatomically correct, and color-matched perfectly to the head. No floating head, no cut-off neck.</span></p>
+<p class="p2"><span class="s1">* Hands and fingers MUST be fully redrawn with correct anatomy and the correct, matched ethnic skin tone.</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">[COMPOSITION &amp; COMMERCIAL SAFETY]</span></p>
+<p class="p2"><span class="s1">* ASPECT RATIO: 2:3 (Vertical).</span></p>
+<p class="p2"><span class="s1">* BACKGROUND: Pure white background only (#FFFFFF). No text, no watermark, no background shadows, no scenery.</span></p>
+<p class="p2"><span class="s1">* The entire figure must be completely visible, standing from head to toe within the frame. Shoes must be clearly shown.</span></p>
+<p class="p2"><span class="s1">* NO flying/floating objects. NO fragile thread-like details (outlines must be robust for physical cutting).</span></p>
+<p class="p2"><span class="s1">* ZERO brand infringement. NO copyrighted logos, real-world emblems, or sports team names. If generic text is used, it MUST be entirely in English.</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">[IMPORTANT PRODUCTION CONSTRAINT]</span></p>
+<p class="p2"><span class="s1">We laser-cut this illustration from 5mm MDF or acrylic along the outline. Therefore:</span></p>
+<p class="p2"><span class="s1">- NO thin floating objects (needles, threads, spears, arrows, thin antennas) unless connected to a thicker structure behind them.</span></p>
+<p class="p2"><span class="s1">- Example: if the character holds a needle, the needle must have the clothing or arm continuing behind it so it's structurally supported for cutting.</span></p>
+<p class="p2"><span class="s1">- Body language must be FUNNY and expressive to have visual appeal.</span></p>
+<p class="p2"><span class="s1">- No text on the figure. No Turkish text anywhere - target audience is US/European Etsy customers.`;</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">const PROMPT_TEMPLATES = [</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ label: 'Doctor', icon: '🩺', text: 'A doctor in a white coat with stethoscope, holding a clipboard, confident pose' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ label: 'Dentist', icon: '🦷', text: 'A dentist in white coat holding a giant tooth model, fun cheerful pose' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ label: 'Chef', icon: '👨‍🍳', text: 'A chef in white uniform and hat, holding a wooden spoon and a pot, happy pose' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ label: 'Musician', icon: '🎸', text: 'A musician holding an acoustic guitar, playing with passion, casual clothes' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ label: 'Gamer', icon: '🎮', text: 'A gamer with headphones, holding a game controller, excited expression' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ label: 'Teacher', icon: '👩‍🏫', text: 'A teacher holding a book and pointer, standing next to a small blackboard' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ label: 'Nurse', icon: '💉', text: 'A nurse in scrubs holding a medical chart, warm friendly smile' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ label: 'Engineer', icon: '👷', text: 'An engineer with hard hat, holding a rolled blueprint and wrench' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ label: 'Athlete', icon: '⚽', text: 'An athlete in sports jersey, holding a soccer ball, dynamic pose' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>{ label: 'Mechanic', icon: '🔧', text: 'A mechanic with tool belt, holding a giant wrench over shoulder' },</span></p>
+<p class="p2"><span class="s1">];</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">const ADMIN_PASSWORD = 'grafizm2026';</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= PLACEHOLDER SVG GENERATOR =============</span></p>
+<p class="p2"><span class="s1">const generatePlaceholderSVG = (seed) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const rand = (i) =&gt; { const s = Math.sin(seed * 9999 + i * 7) * 10000; return s - Math.floor(s); };</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const shirts = ['#e07856','#1e3a5f','#d4a574','#2d5282','#f4a07e','#8b5a3c'];</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const pants = ['#1e3a5f','#0f2340','#4a5568','#2d3748','#5a4632'];</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const skins = ['#f4a07e','#e8b894','#d4a074','#c8956d','#f2d2b3'];</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const hairs = ['#2a1810','#8b5a3c','#d4a574','#4a3020','#3a2418'];</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const shirt = shirts[Math.floor(rand(1)*shirts.length)];</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const pant = pants[Math.floor(rand(2)*pants.length)];</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const skin = skins[Math.floor(rand(3)*skins.length)];</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const hair = hairs[Math.floor(rand(8)*hairs.length)];</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const hasGlasses = rand(5) &gt; 0.5;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const hasHat = rand(6) &gt; 0.6;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const propType = Math.floor(rand(7) * 4);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span></span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const svg = `&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" width="200" height="300"&gt;&lt;rect width="200" height="300" fill="#faf7f2"/&gt;&lt;ellipse cx="100" cy="55" rx="42" ry="45" fill="${skin}"/&gt;&lt;path d="M 60 35 Q 65 20 85 15 Q 100 10 115 15 Q 135 20 140 35 Q 138 25 128 22 Q 118 18 110 20 Q 100 17 90 20 Q 80 18 72 22 Q 62 25 60 35 Z" fill="${hair}"/&gt;${hasHat?`&lt;path d="M 55 30 L 145 30 L 140 15 L 60 15 Z" fill="#1e3a5f"/&gt;`:''}${hasGlasses?`&lt;circle cx="85" cy="52" r="10" fill="white" stroke="#2a2a2a" stroke-width="2"/&gt;&lt;circle cx="115" cy="52" r="10" fill="white" stroke="#2a2a2a" stroke-width="2"/&gt;&lt;line x1="95" y1="52" x2="105" y2="52" stroke="#2a2a2a" stroke-width="2"/&gt;&lt;circle cx="85" cy="53" r="2.5" fill="#2a2a2a"/&gt;&lt;circle cx="115" cy="53" r="2.5" fill="#2a2a2a"/&gt;`:`&lt;ellipse cx="85" cy="52" rx="4" ry="5" fill="white"/&gt;&lt;ellipse cx="115" cy="52" rx="4" ry="5" fill="white"/&gt;&lt;circle cx="85" cy="53" r="2.5" fill="#2a2a2a"/&gt;&lt;circle cx="115" cy="53" r="2.5" fill="#2a2a2a"/&gt;`}&lt;path d="M 78 43 Q 85 40 92 43" stroke="#2a2a2a" stroke-width="2" fill="none" stroke-linecap="round"/&gt;&lt;path d="M 108 43 Q 115 40 122 43" stroke="#2a2a2a" stroke-width="2" fill="none" stroke-linecap="round"/&gt;&lt;path d="M 100 58 Q 98 65 100 70 Q 102 65 100 58" fill="${skin}" stroke="#c08868" stroke-width="0.8"/&gt;&lt;path d="M 85 80 Q 100 90 115 80" stroke="#2a2a2a" stroke-width="2.5" fill="none" stroke-linecap="round"/&gt;&lt;path d="M 87 81 Q 100 87 113 81 L 113 82 Q 100 86 87 82 Z" fill="white"/&gt;&lt;circle cx="75" cy="65" r="5" fill="#e07856" opacity="0.3"/&gt;&lt;circle cx="125" cy="65" r="5" fill="#e07856" opacity="0.3"/&gt;&lt;rect x="92" y="95" width="16" height="12" fill="${skin}"/&gt;&lt;path d="M 70 107 L 130 107 L 135 180 L 65 180 Z" fill="${shirt}"/&gt;&lt;path d="M 70 107 L 130 107 L 128 115 L 72 115 Z" fill="rgba(0,0,0,0.1)"/&gt;&lt;rect x="58" y="110" width="14" height="60" fill="${shirt}" rx="6"/&gt;&lt;rect x="128" y="110" width="14" height="60" fill="${shirt}" rx="6"/&gt;&lt;circle cx="65" cy="175" r="7" fill="${skin}"/&gt;&lt;circle cx="135" cy="175" r="7" fill="${skin}"/&gt;${propType===0?`&lt;rect x="125" y="165" width="25" height="18" fill="#8b5a3c" stroke="#2a2a2a" stroke-width="1"/&gt;&lt;line x1="130" y1="170" x2="145" y2="170" stroke="white" stroke-width="0.8"/&gt;&lt;line x1="130" y1="174" x2="145" y2="174" stroke="white" stroke-width="0.8"/&gt;`:''}${propType===1?`&lt;rect x="52" y="168" width="4" height="20" fill="#888"/&gt;&lt;rect x="48" y="185" width="12" height="6" fill="#555"/&gt;`:''}${propType===3?`&lt;rect x="50" y="170" width="20" height="15" fill="#4a3020" rx="1"/&gt;&lt;rect x="56" y="168" width="8" height="3" fill="#4a3020"/&gt;`:''}&lt;rect x="70" y="180" width="26" height="60" fill="${pant}"/&gt;&lt;rect x="104" y="180" width="26" height="60" fill="${pant}"/&gt;&lt;ellipse cx="83" cy="248" rx="15" ry="6" fill="#2a1810"/&gt;&lt;ellipse cx="117" cy="248" rx="15" ry="6" fill="#2a1810"/&gt;&lt;/svg&gt;`;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>return 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svg)));</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= UTILITIES =============</span></p>
+<p class="p2"><span class="s1">const formatPrice = (p) =&gt; `$${p.toFixed(2)}`;</span></p>
+<p class="p2"><span class="s1">const formatDate = (iso) =&gt; new Date(iso).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });</span></p>
+<p class="p2"><span class="s1">const shortId = (id) =&gt; id.slice(-8).toUpperCase();</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">const validateImage = (file) =&gt; new Promise((resolve, reject) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>if (!file.type.startsWith('image/')) return reject('Please upload an image file (JPG, PNG).');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>if (file.size &gt; 10 * 1024 * 1024) return reject('Image must be smaller than 10MB.');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const img = new Image();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const url = URL.createObjectURL(file);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>img.onload = () =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>URL.revokeObjectURL(url);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (img.width &lt; 500 || img.height &lt; 500) return reject(`Resolution too low (${img.width}×${img.height}px). Please upload at least 500×500px for best results.`);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const reader = new FileReader();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>reader.onload = (e) =&gt; resolve({ dataUrl: e.target.result, width: img.width, height: img.height, size: file.size, name: file.name });</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>reader.readAsDataURL(file);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>img.onerror = () =&gt; reject('Could not load the image. Please try another file.');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>img.src = url;</span></p>
+<p class="p2"><span class="s1">});</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= LOGO =============</span></p>
+<p class="p2"><span class="s1">const Logo = ({ size = 'md', color = 'navy' }) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const sizes = { sm: 'h-8', md: 'h-10', lg: 'h-14' };</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const textSize = { sm: 'text-lg', md: 'text-2xl', lg: 'text-3xl' };</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const colorVal = color === 'navy' ? '#1e3a5f' : '#faf7f2';</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div className="flex items-center gap-3"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;svg viewBox="0 0 60 80" className={sizes[size]} fill="none" stroke={colorVal} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;circle cx="30" cy="12" r="6"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;path d="M20 22 Q18 35 22 50 L18 70 L28 72"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;path d="M38 22 Q42 35 38 50 L42 70 L32 72"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;path d="M22 28 Q30 32 38 28"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;line x1="15" y1="75" x2="45" y2="75"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/svg&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;span className={`font-display font-light tracking-widest ${textSize[size]}`} style={{color: colorVal, letterSpacing: '0.2em'}}&gt;FIGURIST&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= HEADER =============</span></p>
+<p class="p2"><span class="s1">const Header = ({ onAdminClick }) =&gt; (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;header className="bg-cream border-b border-soft sticky top-0 z-40 backdrop-blur-sm bg-opacity-90"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div className="max-w-7xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;a href="#" onClick={(e) =&gt; { e.preventDefault(); window.location.reload(); }}&gt;&lt;Logo size="md" /&gt;&lt;/a&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="flex items-center gap-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="hidden md:flex items-center gap-2 text-sm text-navy"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"&gt;&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;span className="font-medium"&gt;AI Studio Online&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onClick={onAdminClick} className="text-xs text-gray-400 hover:text-navy transition-colors" title="Admin access"&gt;• admin&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/header&gt;</span></p>
+<p class="p2"><span class="s1">);</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= LANDING =============</span></p>
+<p class="p2"><span class="s1">const Landing = ({ onStart }) =&gt; (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div className="hero-gradient min-h-[85vh] relative overflow-hidden"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div className="max-w-7xl mx-auto px-4 md:px-8 py-16 md:py-24 relative"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="grid md:grid-cols-2 gap-12 items-center"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="fade-in-up"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-soft mb-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;span className="text-xs font-semibold tracking-widest text-coral uppercase"&gt;AI-Powered Design&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;span className="text-navy"&gt;✦&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;h1 className="font-display font-light text-5xl md:text-7xl leading-[1.05] text-navy mb-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>You,&lt;br/&gt;&lt;span className="italic"&gt;immortalized&lt;/span&gt;&lt;br/&gt;in acrylic.</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/h1&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p className="text-lg text-gray-600 mb-8 max-w-md leading-relaxed"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>Upload a photo. Describe your dream figure. Our AI draws it. We laser-cut it and ship a custom caricature to your door.</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="flex flex-wrap gap-4 mb-10"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;button onClick={onStart} className="btn-coral px-8 py-4 rounded-full font-semibold text-lg flex items-center gap-2"&gt;Create Your Figure&lt;span&gt;→&lt;/span&gt;&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;a href="#how" className="btn-outline px-8 py-4 rounded-full font-semibold"&gt;How it works&lt;/a&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="flex items-center gap-6 text-sm text-gray-500"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="flex items-center gap-2"&gt;&lt;span className="text-coral"&gt;★★★★★&lt;/span&gt;&lt;span&gt;Etsy verified&lt;/span&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div&gt;🚚 Ships worldwide&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="relative"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="relative aspect-square max-w-md mx-auto"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="absolute inset-0 rounded-full bg-cream-warm"&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="absolute inset-8 rounded-full border-2 border-dashed border-coral opacity-30"&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="absolute top-8 left-8 w-24 h-32 bg-white rounded-lg shadow-lg overflow-hidden border-4 border-white transform -rotate-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;svg viewBox="0 0 100 130" className="w-full h-full"&gt;&lt;circle cx="50" cy="45" r="22" fill="#d4a574" opacity="0.6"/&gt;&lt;rect x="25" y="68" width="50" height="55" fill="#d4a574" opacity="0.4" rx="8"/&gt;&lt;/svg&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="absolute bottom-1 left-0 right-0 text-[10px] text-center font-semibold text-gray-500"&gt;PHOTO&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="absolute top-12 right-8 w-40 h-52 flex items-center justify-center"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;img src={generatePlaceholderSVG(42)} alt="Figure preview" className="w-full h-full object-contain drop-shadow-2xl" /&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-5xl text-coral font-light"&gt;→&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="absolute -bottom-4 -right-4 bg-navy text-cream px-4 py-3 rounded-full font-display italic text-sm shadow-xl transform rotate-6"&gt;100% Custom&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div id="how" className="mt-24 md:mt-32"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="text-center mb-12"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p className="text-xs font-bold tracking-widest text-coral uppercase mb-3"&gt;The Process&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;h2 className="font-display text-4xl md:text-5xl text-navy"&gt;Four steps to your figure&lt;/h2&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="grid md:grid-cols-4 gap-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>{[{n:'01',t:'Upload',d:'A clear headshot of you or someone special'},{n:'02',t:'Describe',d:'Tell our AI the scene you imagine'},{n:'03',t:'Choose',d:'Pick your favorite from 4 AI designs'},{n:'04',t:'Receive',d:'We cut, print and ship to your door'}].map((s, i) =&gt; (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div key={i} className="card-premium p-6 relative"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="font-display text-5xl text-coral opacity-30 font-light"&gt;{s.n}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;h3 className="font-display text-2xl text-navy mt-2 mb-2"&gt;{s.t}&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;p className="text-gray-600 text-sm"&gt;{s.d}&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>))}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1">);</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= STEP INDICATOR =============</span></p>
+<p class="p2"><span class="s1">const StepIndicator = ({ currentStep }) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const labels = ['Photo', 'Describe', 'Design', 'Variant', 'Checkout'];</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div className="max-w-3xl mx-auto px-4 py-8"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="flex items-center justify-between relative"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="absolute top-[18px] left-0 right-0 h-[2px]" style={{background:'var(--border-soft)'}}&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="absolute top-[18px] left-0 h-[2px] transition-all duration-500" style={{background:'var(--coral)', width:`${((currentStep-1)/4)*100}%`}}&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>{labels.map((label, i) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>const stepNum = i + 1;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>const state = stepNum &lt; currentStep ? 'done' : stepNum === currentStep ? 'active' : 'pending';</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div key={i} className="flex flex-col items-center gap-2 relative z-10"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className={`step-dot ${state}`}&gt;{state === 'done' ? '✓' : stepNum}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;span className={`text-xs font-semibold ${state === 'active' ? 'text-navy' : 'text-gray-400'}`}&gt;{label}&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>})}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= STEP 1: UPLOAD =============</span></p>
+<p class="p2"><span class="s1">const Step1Upload = ({ onNext, initialPhoto }) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [photo, setPhoto] = useState(initialPhoto);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [error, setError] = useState('');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [loading, setLoading] = useState(false);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [dragOver, setDragOver] = useState(false);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const inputRef = useRef(null);</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const handleFile = async (file) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setError(''); setLoading(true);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>try { setPhoto(await validateImage(file)); }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>catch (e) { setError(typeof e === 'string' ? e : 'Upload failed.'); }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setLoading(false);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const onDrop = (e) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>e.preventDefault(); setDragOver(false);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (e.dataTransfer.files?.[0]) handleFile(e.dataTransfer.files[0]);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div className="max-w-3xl mx-auto px-4 pb-12"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="text-center mb-8"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p className="text-xs font-bold tracking-widest text-coral uppercase mb-2"&gt;Step 1 of 5&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2 className="font-display text-4xl md:text-5xl text-navy mb-3"&gt;Upload a headshot&lt;/h2&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p className="text-gray-600"&gt;A clear, front-facing photo works best. Only the head will be used.&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>{!photo ? (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className={`upload-zone ${dragOver ? 'drag-over' : ''} rounded-2xl p-12 text-center cursor-pointer`}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>onClick={() =&gt; inputRef.current?.click()}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>onDragOver={(e) =&gt; { e.preventDefault(); setDragOver(true); }}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>onDragLeave={() =&gt; setDragOver(false)}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>onDrop={onDrop}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="w-20 h-20 mx-auto mb-4 rounded-full bg-cream-warm flex items-center justify-center"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1e3a5f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/&gt;&lt;polyline points="17 8 12 3 7 8"/&gt;&lt;line x1="12" y1="3" x2="12" y2="15"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/svg&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h3 className="font-display text-2xl text-navy mb-2"&gt;{loading ? 'Checking your photo...' : 'Drop your photo here'}&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p className="text-gray-500 mb-4"&gt;or click to browse&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p className="text-xs text-gray-400"&gt;JPG or PNG · Min 500×500px · Max 10MB&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;input ref={inputRef} type="file" accept="image/*" className="hidden" onChange={(e) =&gt; e.target.files?.[0] &amp;&amp; handleFile(e.target.files[0])} /&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="mt-8 grid md:grid-cols-3 gap-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>{[{icon:'✓',title:'Front-facing',d:'Look into the camera'},{icon:'☀',title:'Well-lit',d:'Natural light works best'},{icon:'◉',title:'Head only',d:'Face clearly visible'}].map((tip, i) =&gt; (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div key={i} className="bg-white border border-soft rounded-xl p-4 text-center"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="text-2xl text-coral mb-1"&gt;{tip.icon}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="font-semibold text-navy text-sm"&gt;{tip.title}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="text-xs text-gray-500 mt-1"&gt;{tip.d}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>))}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>) : (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="bg-white rounded-2xl border border-soft p-8"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="flex flex-col md:flex-row gap-6 items-center"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;img src={photo.dataUrl} alt="" className="w-48 h-48 object-cover rounded-xl shadow-md" /&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="flex-1 text-center md:text-left"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;h3 className="font-display text-2xl text-navy mb-2"&gt;Photo looks great!&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;p className="text-gray-600 text-sm mb-1"&gt;{photo.width} × {photo.height} pixels&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;p className="text-gray-500 text-xs mb-4"&gt;{photo.name}&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;button onClick={() =&gt; setPhoto(null)} className="btn-outline px-4 py-2 rounded-full text-sm"&gt;Change photo&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>)}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>{error &amp;&amp; &lt;div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm"&gt;⚠ {error}&lt;/div&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="mt-8 flex justify-end"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onClick={() =&gt; photo &amp;&amp; onNext(photo)} disabled={!photo} className="btn-primary px-10 py-4 rounded-full font-semibold flex items-center gap-2"&gt;Continue &lt;span&gt;→&lt;/span&gt;&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= STEP 2: PROMPT =============</span></p>
+<p class="p2"><span class="s1">const Step2Prompt = ({ onNext, onBack, initialPrompt }) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [prompt, setPrompt] = useState(initialPrompt || '');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div className="max-w-4xl mx-auto px-4 pb-12"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="text-center mb-8"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p className="text-xs font-bold tracking-widest text-coral uppercase mb-2"&gt;Step 2 of 5&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2 className="font-display text-4xl md:text-5xl text-navy mb-3"&gt;Describe your figure&lt;/h2&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p className="text-gray-600"&gt;Tell us the scene. Profession, clothing, props, pose — the more specific, the better.&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="grid md:grid-cols-3 gap-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="md:col-span-2"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;label className="text-xs font-bold tracking-widest text-navy uppercase mb-2 block"&gt;Your description&lt;/label&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;textarea value={prompt} onChange={(e) =&gt; setPrompt(e.target.value)} maxLength={500} rows={8} placeholder="Example: A happy chef in a white chef uniform and hat, holding a wooden spoon and a steaming pot of pasta, with a big friendly smile..." /&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="flex justify-between mt-2 text-xs text-gray-400"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;span&gt;Write in English · Be specific&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;span&gt;{prompt.length} / 500&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="mt-6 p-4 bg-cream-warm rounded-xl border border-soft"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="text-xs font-bold text-navy mb-2"&gt;💡 Pro tips&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;ul className="text-xs text-gray-600 space-y-1"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;li&gt;• Mention the profession or hobby (doctor, guitarist, gamer...)&lt;/li&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;li&gt;• Describe clothing and accessories&lt;/li&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;li&gt;• Add props (stethoscope, guitar, ball, tools...)&lt;/li&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;li&gt;• Suggest a funny pose or facial expression&lt;/li&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/ul&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;label className="text-xs font-bold tracking-widest text-navy uppercase mb-2 block"&gt;Quick start&lt;/label&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="space-y-2 max-h-[500px] overflow-y-auto scroll-hide pr-1"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>{PROMPT_TEMPLATES.map((t, i) =&gt; (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;button key={i} onClick={() =&gt; setPrompt(t.text)} className="w-full text-left p-3 bg-white hover:bg-cream-warm border border-soft rounded-lg transition-colors group"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="flex items-center gap-2"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;span className="text-xl"&gt;{t.icon}&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;span className="font-semibold text-navy text-sm group-hover:text-coral"&gt;{t.label}&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p className="text-xs text-gray-500 mt-1 line-clamp-2"&gt;{t.text}&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>))}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="mt-8 flex justify-between"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onClick={onBack} className="btn-outline px-6 py-3 rounded-full"&gt;← Back&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onClick={() =&gt; onNext(prompt)} disabled={prompt.trim().length &lt; 10} className="btn-primary px-10 py-4 rounded-full font-semibold"&gt;Generate with AI ✨&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= STEP 3: GENERATE =============</span></p>
+<p class="p2"><span class="s1">const Step3Generate = ({ onNext, onBack, aiResults, onGenerate, regensLeft, generating }) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [selected, setSelected] = useState(null);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>useEffect(() =&gt; { if (!aiResults &amp;&amp; !generating) onGenerate(); }, []);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div className="max-w-5xl mx-auto px-4 pb-12"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="text-center mb-8"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p className="text-xs font-bold tracking-widest text-coral uppercase mb-2"&gt;Step 3 of 5&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2 className="font-display text-4xl md:text-5xl text-navy mb-3"&gt;{generating ? 'Creating your figures...' : 'Pick your favorite'}&lt;/h2&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p className="text-gray-600"&gt;{generating ? 'Our AI is drawing 4 unique versions — this takes about 30 seconds.' : 'Choose the one you love most, or regenerate for new options.'}&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>{generating ? (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="grid grid-cols-2 md:grid-cols-4 gap-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>{[0,1,2,3].map(i =&gt; &lt;div key={i} className="shimmer rounded-xl aspect-[2/3]"&gt;&lt;/div&gt;)}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="col-span-2 md:col-span-4 text-center mt-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="inline-flex items-center gap-2 text-navy"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;span className="dot-1 w-2 h-2 bg-coral rounded-full inline-block"&gt;&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;span className="dot-2 w-2 h-2 bg-coral rounded-full inline-block"&gt;&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;span className="dot-3 w-2 h-2 bg-coral rounded-full inline-block"&gt;&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;span className="ml-2 text-sm"&gt;Analyzing your photo and drawing...&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>) : aiResults ? (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="grid grid-cols-2 md:grid-cols-4 gap-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>{aiResults.map((img, i) =&gt; (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div key={i} onClick={() =&gt; setSelected(i)} className={`ai-result ${selected === i ? 'selected' : ''}`}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;img src={img} alt={`Option ${i + 1}`} className="w-full aspect-[2/3] object-cover" /&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="p-2 text-center bg-white"&gt;&lt;span className="text-xs font-semibold text-navy"&gt;Option {i + 1}&lt;/span&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>))}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="mt-6 p-4 bg-cream-warm rounded-xl border border-soft flex items-center justify-between flex-wrap gap-3"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="text-sm"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;span className="font-semibold text-navy"&gt;Not quite right?&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;span className="text-gray-600 ml-2"&gt;You have {regensLeft} regeneration{regensLeft !== 1 ? 's' : ''} left.&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;button onClick={() =&gt; { setSelected(null); onGenerate(); }} disabled={regensLeft &lt;= 0} className="btn-outline px-5 py-2 rounded-full text-sm font-semibold"&gt;↻ Regenerate all 4&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>) : null}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="mt-8 flex justify-between"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onClick={onBack} className="btn-outline px-6 py-3 rounded-full"&gt;← Back&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onClick={() =&gt; selected !== null &amp;&amp; onNext(aiResults[selected], selected)} disabled={selected === null || generating} className="btn-primary px-10 py-4 rounded-full font-semibold"&gt;Use this design →&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= VARIANT ICON =============</span></p>
+<p class="p2"><span class="s1">const VariantIcon = ({ material, size = 60 }) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>if (material === 'wood') return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;svg viewBox="0 0 60 80" width={size} height={size * 1.33}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;rect x="20" y="10" width="20" height="50" fill="#8b6f47" rx="2"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;rect x="12" y="58" width="36" height="8" fill="#6b5537" rx="1"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;circle cx="30" cy="25" r="6" fill="#d4a574"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;rect x="24" y="32" width="12" height="20" fill="#e07856"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/svg&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>if (material === 'acrylic') return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;svg viewBox="0 0 60 80" width={size} height={size * 1.33}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;defs&gt;&lt;linearGradient id={`ac-${material}`} x1="0" y1="0" x2="1" y2="1"&gt;&lt;stop offset="0%" stopColor="#b8d4e8"/&gt;&lt;stop offset="100%" stopColor="#e8f0f7"/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;rect x="20" y="10" width="20" height="50" fill={`url(#ac-${material})`} rx="2" opacity="0.7"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;rect x="12" y="58" width="36" height="8" fill="#2a2a2a" rx="1"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;circle cx="30" cy="25" r="6" fill="#f4a07e"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;rect x="24" y="32" width="12" height="20" fill="#1e3a5f"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/svg&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>if (material === 'bundle') return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;svg viewBox="0 0 60 80" width={size} height={size * 1.33}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;rect x="8" y="30" width="14" height="18" fill="#d4a574" rx="2"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;circle cx="15" cy="25" r="3" fill="#8b6f47"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;rect x="26" y="25" width="12" height="28" fill="#e07856" rx="1"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;circle cx="48" cy="35" r="10" fill="#1e3a5f"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;circle cx="48" cy="35" r="6" fill="#d4a574"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/svg&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;svg viewBox="0 0 60 80" width={size} height={size * 1.33}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;defs&gt;&lt;linearGradient id="ac-fs" x1="0" y1="0" x2="1" y2="1"&gt;&lt;stop offset="0%" stopColor="#b8d4e8"/&gt;&lt;stop offset="100%" stopColor="#e8f0f7"/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;rect x="22" y="10" width="16" height="40" fill="url(#ac-fs)" rx="1" opacity="0.7"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;rect x="5" y="55" width="10" height="12" fill="#d4a574" rx="1"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;rect x="25" y="55" width="10" height="12" fill="#e07856" rx="1"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;circle cx="50" cy="61" r="7" fill="#1e3a5f"/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/svg&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= STEP 4: VARIANT =============</span></p>
+<p class="p2"><span class="s1">const Step4Variant = ({ onNext, onBack, selectedVariant: initialVariant }) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [selected, setSelected] = useState(initialVariant);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div className="max-w-6xl mx-auto px-4 pb-12"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="text-center mb-8"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p className="text-xs font-bold tracking-widest text-coral uppercase mb-2"&gt;Step 4 of 5&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2 className="font-display text-4xl md:text-5xl text-navy mb-3"&gt;Choose your product&lt;/h2&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p className="text-gray-600"&gt;Premium materials, laser-cut to your figure's exact outline.&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>{VARIANTS.map(v =&gt; (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div key={v.id} onClick={() =&gt; setSelected(v)} className={`variant-card p-5 relative ${selected?.id === v.id ? 'selected' : ''}`}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>{v.featured &amp;&amp; &lt;div className="absolute top-2 right-2 bg-coral text-white text-[10px] font-bold px-2 py-1 rounded-full tracking-wider"&gt;POPULAR&lt;/div&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="aspect-square flex items-center justify-center bg-cream-warm rounded-lg mb-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;VariantIcon material={v.material} size={70} /&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="text-xs font-bold tracking-widest text-gray-400 uppercase mb-1"&gt;{v.material === 'wood' ? 'Wood' : v.material === 'acrylic' ? 'Acrylic' : v.material === 'bundle' ? 'Bundle' : 'Full Set'}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h3 className="font-display text-xl text-navy mb-1"&gt;{v.name}&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p className="text-sm text-gray-500 mb-3"&gt;{v.size}&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="flex items-end justify-between"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;span className="font-display text-2xl text-navy"&gt;{formatPrice(v.price)}&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>{selected?.id === v.id &amp;&amp; &lt;span className="text-coral font-semibold text-sm"&gt;Selected&lt;/span&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>))}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="mt-8 flex justify-between"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onClick={onBack} className="btn-outline px-6 py-3 rounded-full"&gt;← Back&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onClick={() =&gt; selected &amp;&amp; onNext(selected)} disabled={!selected} className="btn-primary px-10 py-4 rounded-full font-semibold"&gt;Continue to checkout →&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= STEP 5: CHECKOUT =============</span></p>
+<p class="p2"><span class="s1">const Step5Checkout = ({ onNext, onBack, variant, selectedImage }) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [form, setForm] = useState({ firstName: '', lastName: '', email: '', phone: '', country: '', city: '', postalCode: '', address: '', notes: '' });</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [errors, setErrors] = useState({});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [submitting, setSubmitting] = useState(false);</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const update = (k, v) =&gt; { setForm({ ...form, [k]: v }); if (errors[k]) setErrors({ ...errors, [k]: null }); };</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const validate = () =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const e = {};</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (!form.firstName.trim()) e.firstName = 'Required';</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (!form.lastName.trim()) e.lastName = 'Required';</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (!form.email.trim() || !/^[^@]+@[^@]+\.[^@]+$/.test(form.email)) e.email = 'Valid email required';</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (!form.phone.trim()) e.phone = 'Required';</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (!form.country.trim()) e.country = 'Required';</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (!form.city.trim()) e.city = 'Required';</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (!form.postalCode.trim()) e.postalCode = 'Required';</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (!form.address.trim() || form.address.length &lt; 10) e.address = 'Please enter your full address';</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setErrors(e); return Object.keys(e).length === 0;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const submit = async () =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (!validate()) return;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setSubmitting(true); await onNext(form); setSubmitting(false);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div className="max-w-5xl mx-auto px-4 pb-12"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="text-center mb-8"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p className="text-xs font-bold tracking-widest text-coral uppercase mb-2"&gt;Step 5 of 5&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2 className="font-display text-4xl md:text-5xl text-navy mb-3"&gt;Almost there!&lt;/h2&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p className="text-gray-600"&gt;Where should we send your figure?&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="grid md:grid-cols-3 gap-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="md:col-span-2 space-y-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="bg-white rounded-2xl border border-soft p-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h3 className="font-display text-xl text-navy mb-4"&gt;Contact&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="grid grid-cols-2 gap-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div&gt;&lt;label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block"&gt;First name&lt;/label&gt;&lt;input type="text" value={form.firstName} onChange={(e) =&gt; update('firstName', e.target.value)} /&gt;{errors.firstName &amp;&amp; &lt;p className="text-red-500 text-xs mt-1"&gt;{errors.firstName}&lt;/p&gt;}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div&gt;&lt;label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block"&gt;Last name&lt;/label&gt;&lt;input type="text" value={form.lastName} onChange={(e) =&gt; update('lastName', e.target.value)} /&gt;{errors.lastName &amp;&amp; &lt;p className="text-red-500 text-xs mt-1"&gt;{errors.lastName}&lt;/p&gt;}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div&gt;&lt;label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block"&gt;Email&lt;/label&gt;&lt;input type="email" value={form.email} onChange={(e) =&gt; update('email', e.target.value)} /&gt;{errors.email &amp;&amp; &lt;p className="text-red-500 text-xs mt-1"&gt;{errors.email}&lt;/p&gt;}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div&gt;&lt;label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block"&gt;Phone&lt;/label&gt;&lt;input type="tel" value={form.phone} onChange={(e) =&gt; update('phone', e.target.value)} placeholder="+1 ..." /&gt;{errors.phone &amp;&amp; &lt;p className="text-red-500 text-xs mt-1"&gt;{errors.phone}&lt;/p&gt;}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="bg-white rounded-2xl border border-soft p-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h3 className="font-display text-xl text-navy mb-4"&gt;Shipping address&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="space-y-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="grid grid-cols-2 gap-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div&gt;&lt;label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block"&gt;Country&lt;/label&gt;&lt;input type="text" value={form.country} onChange={(e) =&gt; update('country', e.target.value)} placeholder="United States" /&gt;{errors.country &amp;&amp; &lt;p className="text-red-500 text-xs mt-1"&gt;{errors.country}&lt;/p&gt;}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div&gt;&lt;label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block"&gt;City&lt;/label&gt;&lt;input type="text" value={form.city} onChange={(e) =&gt; update('city', e.target.value)} /&gt;{errors.city &amp;&amp; &lt;p className="text-red-500 text-xs mt-1"&gt;{errors.city}&lt;/p&gt;}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div&gt;&lt;label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block"&gt;Postal code&lt;/label&gt;&lt;input type="text" value={form.postalCode} onChange={(e) =&gt; update('postalCode', e.target.value)} /&gt;{errors.postalCode &amp;&amp; &lt;p className="text-red-500 text-xs mt-1"&gt;{errors.postalCode}&lt;/p&gt;}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div&gt;&lt;label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block"&gt;Street address&lt;/label&gt;&lt;textarea rows={3} value={form.address} onChange={(e) =&gt; update('address', e.target.value)} placeholder="Street, apartment, building..." /&gt;{errors.address &amp;&amp; &lt;p className="text-red-500 text-xs mt-1"&gt;{errors.address}&lt;/p&gt;}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div&gt;&lt;label className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1 block"&gt;Order notes (optional)&lt;/label&gt;&lt;textarea rows={2} value={form.notes} onChange={(e) =&gt; update('notes', e.target.value)} placeholder="Gift wrapping, special requests..." /&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="bg-white rounded-2xl border border-soft p-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h3 className="font-display text-xl text-navy mb-4"&gt;Payment&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="bg-cream-warm rounded-xl p-6 text-center border border-dashed border-coral"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="text-2xl mb-2"&gt;🧪&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;p className="font-semibold text-navy mb-1"&gt;Demo Mode&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;p className="text-sm text-gray-600"&gt;Payment gateway integration comes later. This order will be placed without charging a real card.&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="md:col-span-1"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="bg-white rounded-2xl border border-soft p-6 sticky top-24"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h3 className="font-display text-xl text-navy mb-4"&gt;Your order&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="aspect-[2/3] rounded-lg overflow-hidden mb-4 bg-cream-warm"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>{selectedImage &amp;&amp; &lt;img src={selectedImage} alt="Your figure" className="w-full h-full object-cover" /&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="space-y-3 text-sm"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="flex justify-between"&gt;&lt;span className="text-gray-500"&gt;Product&lt;/span&gt;&lt;span className="font-semibold text-navy text-right"&gt;{variant?.name}&lt;br/&gt;{variant?.size}&lt;/span&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="flex justify-between"&gt;&lt;span className="text-gray-500"&gt;Quantity&lt;/span&gt;&lt;span className="font-semibold text-navy"&gt;1&lt;/span&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="border-t border-soft pt-3 flex justify-between items-end"&gt;&lt;span className="text-gray-500"&gt;Total&lt;/span&gt;&lt;span className="font-display text-2xl text-navy"&gt;{formatPrice(variant?.price || 0)}&lt;/span&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;button onClick={submit} disabled={submitting} className="btn-coral w-full mt-6 py-4 rounded-full font-semibold"&gt;{submitting ? 'Placing order...' : 'Complete Order 🎉'}&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p className="text-xs text-gray-400 text-center mt-3"&gt;🔒 Your photo and data are kept private&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="mt-8 flex justify-start"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;button onClick={onBack} className="btn-outline px-6 py-3 rounded-full"&gt;← Back&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= SUCCESS =============</span></p>
+<p class="p2"><span class="s1">const SuccessPage = ({ order, onNew }) =&gt; (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div className="max-w-2xl mx-auto px-4 py-16 text-center"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div className="w-24 h-24 mx-auto mb-6 rounded-full bg-coral flex items-center justify-center text-white text-5xl"&gt;✓&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h1 className="font-display text-5xl text-navy mb-4"&gt;Order placed!&lt;/h1&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p className="text-gray-600 text-lg mb-2"&gt;Thank you, &lt;strong&gt;{order.customer.firstName}&lt;/strong&gt;!&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;p className="text-gray-500 mb-8"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>Your order &lt;span className="font-mono text-navy font-semibold"&gt;#{shortId(order.id)}&lt;/span&gt; is now in our queue.</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;br/&gt;We'll review it within 24 hours and send a confirmation to &lt;strong&gt;{order.customer.email}&lt;/strong&gt;.</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div className="bg-white rounded-2xl border border-soft p-6 text-left mb-8"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;h3 className="font-display text-xl text-navy mb-4"&gt;What happens next?&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;ol className="space-y-3 text-sm text-gray-600"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;li className="flex gap-3"&gt;&lt;span className="w-6 h-6 rounded-full bg-cream-warm text-navy font-bold flex items-center justify-center text-xs flex-shrink-0"&gt;1&lt;/span&gt;&lt;span&gt;We review your figure design and confirm the order (within 24h).&lt;/span&gt;&lt;/li&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;li className="flex gap-3"&gt;&lt;span className="w-6 h-6 rounded-full bg-cream-warm text-navy font-bold flex items-center justify-center text-xs flex-shrink-0"&gt;2&lt;/span&gt;&lt;span&gt;We UV-print and laser-cut your {order.variant.name} ({order.variant.size}).&lt;/span&gt;&lt;/li&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;li className="flex gap-3"&gt;&lt;span className="w-6 h-6 rounded-full bg-cream-warm text-navy font-bold flex items-center justify-center text-xs flex-shrink-0"&gt;3&lt;/span&gt;&lt;span&gt;We carefully package and ship it to your address.&lt;/span&gt;&lt;/li&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/ol&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;button onClick={onNew} className="btn-primary px-8 py-3 rounded-full font-semibold"&gt;Create another figure&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1">);</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= CUSTOMER FLOW =============</span></p>
+<p class="p2"><span class="s1">const CustomerFlow = () =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [step, setStep] = useState(0);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [photo, setPhoto] = useState(null);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [prompt, setPrompt] = useState('');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [aiResults, setAiResults] = useState(null);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [regensLeft, setRegensLeft] = useState(3);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [generating, setGenerating] = useState(false);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [hasGenerated, setHasGenerated] = useState(false);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [selectedImage, setSelectedImage] = useState(null);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [selectedImageIdx, setSelectedImageIdx] = useState(null);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [variant, setVariant] = useState(null);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [completedOrder, setCompletedOrder] = useState(null);</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const resetAll = () =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setStep(0); setPhoto(null); setPrompt(''); setAiResults(null);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setRegensLeft(3); setSelectedImage(null); setSelectedImageIdx(null);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setVariant(null); setCompletedOrder(null); setHasGenerated(false);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const generateImages = async () =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setGenerating(true);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const base64Image = photo.dataUrl.split(',')[1];</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>try {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>const response = await fetch('/api/gemini', {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>method: 'POST',</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>headers: { 'Content-Type': 'application/json' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>body: JSON.stringify({ prompt, imageBase64: base64Image, masterPrompt: MASTER_PROMPT })</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>});</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>const data = await response.json();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span></span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>if (data.images &amp;&amp; data.images.length &gt; 0) {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>setAiResults(data.images);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>} else {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>alert('Yapay zeka üretimi başarısız oldu. Lütfen tekrar deneyin.');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>} catch (err) {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>console.error('API Hatası:', err);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>alert('Sunucu bağlantısı kurulamadı.');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (hasGenerated) setRegensLeft(r =&gt; r - 1); else setHasGenerated(true);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setGenerating(false);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const placeOrder = async (customerForm) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const order = {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>id: `order_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>status: 'pending',</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>createdAt: new Date().toISOString(),</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>customer: customerForm,</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>photo: { dataUrl: photo.dataUrl, width: photo.width, height: photo.height, name: photo.name },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>prompt: prompt,</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>masterPrompt: MASTER_PROMPT,</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>aiResults: aiResults,</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>selectedImageIndex: selectedImageIdx,</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>selectedImage: selectedImage,</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>variant: variant,</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>regenerationsUsed: 3 - regensLeft,</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>};</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>await saveOrder(order);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setCompletedOrder(order);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setStep(6);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>if (step === 0) return &lt;Landing onStart={() =&gt; setStep(1)} /&gt;;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>if (step === 6 &amp;&amp; completedOrder) return &lt;SuccessPage order={completedOrder} onNew={resetAll} /&gt;;</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;StepIndicator currentStep={step} /&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>{step === 1 &amp;&amp; &lt;Step1Upload initialPhoto={photo} onNext={(p) =&gt; { setPhoto(p); setStep(2); }} /&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>{step === 2 &amp;&amp; &lt;Step2Prompt initialPrompt={prompt} onNext={(p) =&gt; { if (p !== prompt) { setAiResults(null); setHasGenerated(false); } setPrompt(p); setStep(3); }} onBack={() =&gt; setStep(1)} /&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>{step === 3 &amp;&amp; &lt;Step3Generate aiResults={aiResults} onGenerate={generateImages} generating={generating} regensLeft={regensLeft} onNext={(img, idx) =&gt; { setSelectedImage(img); setSelectedImageIdx(idx); setStep(4); }} onBack={() =&gt; setStep(2)} /&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>{step === 4 &amp;&amp; &lt;Step4Variant selectedVariant={variant} onNext={(v) =&gt; { setVariant(v); setStep(5); }} onBack={() =&gt; setStep(3)} /&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>{step === 5 &amp;&amp; &lt;Step5Checkout variant={variant} selectedImage={selectedImage} onNext={placeOrder} onBack={() =&gt; setStep(4)} /&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= ADMIN LOGIN =============</span></p>
+<p class="p2"><span class="s1">const AdminLogin = ({ onSuccess, onCancel }) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [pw, setPw] = useState('');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [err, setErr] = useState('');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const submit = () =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (pw === ADMIN_PASSWORD) onSuccess();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>else setErr('Incorrect password');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div className="min-h-screen bg-cream flex items-center justify-center px-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="bg-white rounded-2xl border border-soft p-8 max-w-md w-full"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="text-center mb-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="w-16 h-16 mx-auto mb-4 rounded-full bg-navy flex items-center justify-center text-cream text-2xl"&gt;🔐&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;h2 className="font-display text-3xl text-navy"&gt;Admin Access&lt;/h2&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;p className="text-gray-500 text-sm mt-1"&gt;Enter your password to continue&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;input type="password" value={pw} onChange={(e) =&gt; { setPw(e.target.value); setErr(''); }} onKeyDown={(e) =&gt; e.key === 'Enter' &amp;&amp; submit()} placeholder="Password" autoFocus /&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>{err &amp;&amp; &lt;p className="text-red-500 text-xs mt-2"&gt;{err}&lt;/p&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p className="text-xs text-gray-400 mt-3 mb-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>Default password: &lt;code className="bg-cream-warm px-2 py-0.5 rounded"&gt;grafizm2026&lt;/code&gt;&lt;br/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;span className="text-[10px]"&gt;Change in source code: search for ADMIN_PASSWORD&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="flex gap-2"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;button onClick={onCancel} className="btn-outline flex-1 py-3 rounded-full"&gt;Cancel&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;button onClick={submit} className="btn-primary flex-1 py-3 rounded-full font-semibold"&gt;Sign in&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= ORDER DETAIL =============</span></p>
+<p class="p2"><span class="s1">const OrderDetail = ({ order, onClose, onStatusUpdate }) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [localOrder, setLocalOrder] = useState(order);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [emailSent, setEmailSent] = useState(false);</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const approve = async () =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>await onStatusUpdate(order.id, 'approved');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setLocalOrder({ ...localOrder, status: 'approved' });</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setEmailSent(true);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setTimeout(() =&gt; setEmailSent(false), 4000);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const markShipped = async () =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>await onStatusUpdate(order.id, 'shipped');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setLocalOrder({ ...localOrder, status: 'shipped' });</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const downloadImage = (dataUrl, filename) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>const a = document.createElement('a'); a.href = dataUrl; a.download = filename; a.click();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const printShippingLabel = () =&gt; window.print();</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const sImg = localOrder.selectedImage;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const origImg = localOrder.photo?.dataUrl;</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-start justify-center p-4 overflow-y-auto no-print"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="bg-cream rounded-2xl max-w-5xl w-full my-8"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="p-6 border-b border-soft flex items-center justify-between sticky top-0 bg-cream z-10 rounded-t-2xl"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="text-xs text-gray-500 mb-1"&gt;Order #{shortId(localOrder.id)}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h2 className="font-display text-2xl text-navy"&gt;{localOrder.customer.firstName} {localOrder.customer.lastName}&lt;/h2&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="mt-1 flex items-center gap-2"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;span className={`text-xs px-2 py-1 rounded-full font-semibold status-${localOrder.status}`}&gt;{localOrder.status.toUpperCase()}&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;span className="text-xs text-gray-500"&gt;{formatDate(localOrder.createdAt)}&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;button onClick={onClose} className="text-gray-400 hover:text-navy text-3xl leading-none"&gt;×&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>{emailSent &amp;&amp; (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="mx-6 mt-4 p-3 bg-green-50 border border-green-200 rounded-lg text-sm text-green-800"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>✓ Email sent to &lt;strong&gt;{localOrder.customer.email}&lt;/strong&gt;: "Your order has been approved and is being prepared."</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;span className="block text-xs text-green-600 mt-1"&gt;(Demo mode: no real email sent. Integrate SendGrid/Resend to enable.)&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>)}</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="p-6 grid md:grid-cols-2 gap-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="space-y-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="bg-white rounded-xl border border-soft p-5"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;h3 className="font-display text-lg text-navy mb-3"&gt;Customer&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="space-y-2 text-sm"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div&gt;&lt;span className="text-gray-500"&gt;Name:&lt;/span&gt; &lt;strong&gt;{localOrder.customer.firstName} {localOrder.customer.lastName}&lt;/strong&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div&gt;&lt;span className="text-gray-500"&gt;Email:&lt;/span&gt; &lt;a href={`mailto:${localOrder.customer.email}`} className="text-coral"&gt;{localOrder.customer.email}&lt;/a&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div&gt;&lt;span className="text-gray-500"&gt;Phone:&lt;/span&gt; {localOrder.customer.phone}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="bg-white rounded-xl border border-soft p-5"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;h3 className="font-display text-lg text-navy mb-3"&gt;Shipping address&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;address className="not-italic text-sm text-gray-700 leading-relaxed"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;strong&gt;{localOrder.customer.firstName} {localOrder.customer.lastName}&lt;/strong&gt;&lt;br/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>{localOrder.customer.address}&lt;br/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>{localOrder.customer.city}, {localOrder.customer.postalCode}&lt;br/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>{localOrder.customer.country}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/address&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>{localOrder.customer.notes &amp;&amp; (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="mt-3 pt-3 border-t border-soft text-xs"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;span className="font-semibold text-navy"&gt;Notes: &lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;span className="text-gray-600"&gt;{localOrder.customer.notes}&lt;/span&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>)}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="bg-white rounded-xl border border-soft p-5"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;h3 className="font-display text-lg text-navy mb-3"&gt;Product&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="flex justify-between items-center"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;div className="font-semibold text-navy"&gt;{localOrder.variant.name}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;div className="text-sm text-gray-500"&gt;{localOrder.variant.size}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="font-display text-2xl text-navy"&gt;{formatPrice(localOrder.variant.price)}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="bg-white rounded-xl border border-soft p-5"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;h3 className="font-display text-lg text-navy mb-3"&gt;Customer description&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;p className="text-sm text-gray-700 italic bg-cream-warm p-3 rounded-lg"&gt;"{localOrder.prompt}"&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;details className="mt-3 text-xs"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;summary className="cursor-pointer text-gray-500 hover:text-navy"&gt;Show full master prompt&lt;/summary&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;pre className="mt-2 p-3 bg-cream-warm rounded-lg text-[10px] text-gray-600 overflow-x-auto whitespace-pre-wrap"&gt;{localOrder.masterPrompt}&lt;/pre&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/details&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="bg-white rounded-xl border border-soft p-5 text-xs text-gray-500 space-y-1"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="flex justify-between"&gt;&lt;span&gt;Regenerations used:&lt;/span&gt;&lt;span className="text-navy font-semibold"&gt;{localOrder.regenerationsUsed} / 3&lt;/span&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="flex justify-between"&gt;&lt;span&gt;Selected option:&lt;/span&gt;&lt;span className="text-navy font-semibold"&gt;#{localOrder.selectedImageIndex + 1} of 4&lt;/span&gt;&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="space-y-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="bg-white rounded-xl border border-soft p-5"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="flex justify-between items-center mb-3"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3 className="font-display text-lg text-navy"&gt;Original photo&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button onClick={() =&gt; downloadImage(origImg, `${shortId(localOrder.id)}-original.jpg`)} className="text-xs text-coral hover:underline font-semibold"&gt;↓ Download&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>{origImg &amp;&amp; &lt;img src={origImg} alt="Original" className="w-full rounded-lg" /&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;p className="text-xs text-gray-500 mt-2"&gt;{localOrder.photo?.width} × {localOrder.photo?.height}px&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="bg-white rounded-xl border-2 border-coral p-5 shadow-md"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="flex justify-between items-center mb-3"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3 className="font-display text-lg text-navy"&gt;✨ Final design&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button onClick={() =&gt; downloadImage(sImg, `${shortId(localOrder.id)}-PRINT-READY.png`)} className="btn-coral px-3 py-1 rounded-full text-xs font-semibold"&gt;↓ Download print file&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>{sImg &amp;&amp; &lt;img src={sImg} alt="Selected design" className="w-full rounded-lg" /&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;p className="text-xs text-gray-500 mt-2"&gt;💡 Use this as your UV-print master. When Gemini API is connected, it returns 2000×2000 PNG automatically.&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="bg-white rounded-xl border border-soft p-5"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;h3 className="font-display text-lg text-navy mb-3"&gt;All AI alternatives&lt;/h3&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="grid grid-cols-4 gap-2"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>{localOrder.aiResults?.map((img, i) =&gt; (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;div key={i} className="relative"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img src={img} alt={`Option ${i + 1}`} className={`w-full aspect-[2/3] object-cover rounded ${i === localOrder.selectedImageIndex ? 'ring-2 ring-coral' : 'opacity-60'}`} /&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span>{i === localOrder.selectedImageIndex &amp;&amp; &lt;div className="absolute top-1 right-1 bg-coral text-white text-[9px] font-bold px-1.5 py-0.5 rounded"&gt;✓&lt;/div&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>))}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="p-6 border-t border-soft bg-white rounded-b-2xl flex flex-wrap gap-3 justify-between"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;button onClick={printShippingLabel} className="btn-outline px-6 py-3 rounded-full font-semibold flex items-center gap-2"&gt;🖨 Print shipping label&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="flex gap-2"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>{localOrder.status === 'pending' &amp;&amp; &lt;button onClick={approve} className="btn-coral px-6 py-3 rounded-full font-semibold"&gt;✓ Approve &amp; email customer&lt;/button&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>{localOrder.status === 'approved' &amp;&amp; &lt;button onClick={markShipped} className="btn-primary px-6 py-3 rounded-full font-semibold"&gt;📦 Mark as shipped&lt;/button&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>{localOrder.status === 'shipped' &amp;&amp; &lt;span className="px-6 py-3 rounded-full bg-green-50 text-green-700 font-semibold text-sm"&gt;✓ Order completed&lt;/span&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="print-label hidden"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div style={{padding: '20mm', fontFamily: 'Arial, sans-serif', fontSize: '14pt'}}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div style={{borderBottom: '2px solid #000', paddingBottom: '10mm', marginBottom: '10mm'}}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h1 style={{fontSize: '24pt', margin: 0}}&gt;FIGURIST&lt;/h1&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p style={{fontSize: '10pt', margin: '2mm 0 0 0'}}&gt;Custom Figures · Made in Türkiye&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div style={{marginBottom: '10mm'}}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p style={{fontSize: '10pt', margin: 0}}&gt;ORDER&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p style={{fontSize: '18pt', fontWeight: 'bold', margin: '2mm 0'}}&gt;#{shortId(localOrder.id)}&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div style={{padding: '10mm', border: '2px solid #000'}}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p style={{fontSize: '10pt', margin: 0, textTransform: 'uppercase'}}&gt;Ship to:&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p style={{fontSize: '16pt', fontWeight: 'bold', margin: '3mm 0 2mm 0'}}&gt;{localOrder.customer.firstName} {localOrder.customer.lastName}&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p style={{fontSize: '12pt', margin: 0, lineHeight: '1.6'}}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>{localOrder.customer.address}&lt;br/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>{localOrder.customer.city}, {localOrder.customer.postalCode}&lt;br/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;strong&gt;{localOrder.customer.country}&lt;/strong&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p style={{fontSize: '10pt', margin: '5mm 0 0 0'}}&gt;Phone: {localOrder.customer.phone}&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div style={{marginTop: '10mm', fontSize: '10pt'}}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;&lt;strong&gt;Product:&lt;/strong&gt; {localOrder.variant.name} — {localOrder.variant.size}&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;&lt;strong&gt;Order date:&lt;/strong&gt; {formatDate(localOrder.createdAt)}&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= ADMIN PANEL =============</span></p>
+<p class="p2"><span class="s1">const AdminPanel = ({ onExit }) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [orders, setOrders] = useState([]);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [loading, setLoading] = useState(true);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [filter, setFilter] = useState('all');</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [selectedOrder, setSelectedOrder] = useState(null);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [search, setSearch] = useState('');</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const refresh = async () =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setLoading(true);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setOrders(await loadAllOrders());</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>setLoading(false);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>useEffect(() =&gt; { refresh(); }, []);</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const handleStatusUpdate = async (orderId, status) =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>await updateOrderStatus(orderId, status);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>await refresh();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const filtered = orders.filter(o =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (filter !== 'all' &amp;&amp; o.status !== filter) return false;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>if (search) {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>const s = search.toLowerCase();</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>return o.customer.firstName.toLowerCase().includes(s) ||</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">             </span>o.customer.lastName.toLowerCase().includes(s) ||</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">             </span>o.customer.email.toLowerCase().includes(s) ||</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">             </span>shortId(o.id).toLowerCase().includes(s);</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>return true;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>});</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const stats = {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>total: orders.length,</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>pending: orders.filter(o =&gt; o.status === 'pending').length,</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>approved: orders.filter(o =&gt; o.status === 'approved').length,</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>shipped: orders.filter(o =&gt; o.status === 'shipped').length,</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>revenue: orders.reduce((sum, o) =&gt; sum + (o.variant?.price || 0), 0),</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div className="min-h-screen bg-cream"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div className="max-w-7xl mx-auto px-4 md:px-8 py-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="flex items-center justify-between mb-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p className="text-xs font-bold tracking-widest text-coral uppercase"&gt;Admin Dashboard&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h1 className="font-display text-3xl text-navy"&gt;Orders&lt;/h1&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="flex gap-2"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;button onClick={refresh} className="btn-outline px-4 py-2 rounded-full text-sm"&gt;↻ Refresh&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;button onClick={onExit} className="btn-primary px-4 py-2 rounded-full text-sm"&gt;Exit admin&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>{[</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>{ label: 'Total orders', value: stats.total, color: 'text-navy' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>{ label: 'Pending', value: stats.pending, color: 'text-yellow-600' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>{ label: 'Approved', value: stats.approved, color: 'text-green-600' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>{ label: 'Shipped', value: stats.shipped, color: 'text-blue-600' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>{ label: 'Revenue', value: formatPrice(stats.revenue), color: 'text-coral' },</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>].map((s, i) =&gt; (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div key={i} className="bg-white rounded-xl border border-soft p-4"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className="text-xs text-gray-500 uppercase tracking-wide font-semibold"&gt;{s.label}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;div className={`font-display text-3xl ${s.color} mt-1`}&gt;{s.value}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>))}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="bg-white rounded-xl border border-soft p-4 mb-4 flex flex-wrap gap-3 items-center"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="flex gap-2"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>{['all', 'pending', 'approved', 'shipped'].map(f =&gt; (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;button key={f} onClick={() =&gt; setFilter(f)} className={`px-4 py-2 rounded-full text-sm font-semibold capitalize transition ${filter === f ? 'bg-navy text-cream' : 'bg-cream-warm text-navy hover:bg-coral hover:text-white'}`}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>{f} {f !== 'all' &amp;&amp; `(${stats[f]})`}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/button&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>))}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;input type="text" placeholder="Search by name, email, order ID..." value={search} onChange={(e) =&gt; setSearch(e.target.value)} className="flex-1 min-w-[200px] max-w-md" /&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="bg-white rounded-xl border border-soft overflow-hidden"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>{loading ? (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="p-12 text-center text-gray-500"&gt;Loading orders...&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>) : filtered.length === 0 ? (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="p-12 text-center text-gray-500"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>{orders.length === 0 ? (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;&gt;&lt;div className="text-4xl mb-2"&gt;📦&lt;/div&gt;&lt;p className="font-display text-xl text-navy mb-1"&gt;No orders yet&lt;/p&gt;&lt;p className="text-sm"&gt;Orders placed by customers will appear here.&lt;/p&gt;&lt;/&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>) : 'No orders match your filter.'}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>) : (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="overflow-x-auto"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;table className="w-full text-sm"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;thead className="bg-cream-warm"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;tr className="text-left text-xs font-bold text-navy uppercase tracking-wide"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;th className="px-4 py-3"&gt;Preview&lt;/th&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;th className="px-4 py-3"&gt;Order&lt;/th&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;th className="px-4 py-3"&gt;Customer&lt;/th&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;th className="px-4 py-3"&gt;Product&lt;/th&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;th className="px-4 py-3"&gt;Date&lt;/th&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;th className="px-4 py-3"&gt;Status&lt;/th&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;th className="px-4 py-3"&gt;Total&lt;/th&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;th className="px-4 py-3"&gt;&lt;/th&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                  </span>&lt;/tr&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/thead&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;tbody&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                  </span>{filtered.map(o =&gt; (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;tr key={o.id} className="admin-row border-t border-soft cursor-pointer" onClick={() =&gt; setSelectedOrder(o)}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;td className="px-4 py-3"&gt;&lt;img src={o.selectedImage} alt="" className="w-12 h-16 object-cover rounded" /&gt;&lt;/td&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;td className="px-4 py-3 font-mono text-xs text-navy"&gt;#{shortId(o.id)}&lt;/td&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;td className="px-4 py-3"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="font-semibold text-navy"&gt;{o.customer.firstName} {o.customer.lastName}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="text-xs text-gray-500"&gt;{o.customer.email}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;/td&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;td className="px-4 py-3"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="font-semibold text-navy"&gt;{o.variant.name}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="text-xs text-gray-500"&gt;{o.variant.size}&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;/td&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;td className="px-4 py-3 text-xs text-gray-600"&gt;{formatDate(o.createdAt)}&lt;/td&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;td className="px-4 py-3"&gt;&lt;span className={`text-xs px-2 py-1 rounded-full font-semibold status-${o.status}`}&gt;{o.status.toUpperCase()}&lt;/span&gt;&lt;/td&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;td className="px-4 py-3 font-semibold text-navy"&gt;{formatPrice(o.variant.price)}&lt;/td&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                      </span>&lt;td className="px-4 py-3 text-right"&gt;&lt;span className="text-coral text-xs font-semibold"&gt;View →&lt;/span&gt;&lt;/td&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/tr&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                  </span>))}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/tbody&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/table&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>)}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p className="text-center text-xs text-gray-400 mt-6"&gt;Orders are saved in Firebase Firestore and visible across sessions.&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>{selectedOrder &amp;&amp; &lt;OrderDetail order={selectedOrder} onClose={() =&gt; setSelectedOrder(null)} onStatusUpdate={handleStatusUpdate} /&gt;}</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">// ============= ROOT APP =============</span></p>
+<p class="p2"><span class="s1">const App = () =&gt; {</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>const [view, setView] = useState('customer');</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>if (view === 'admin-login') return &lt;AdminLogin onSuccess={() =&gt; setView('admin')} onCancel={() =&gt; setView('customer')} /&gt;;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>if (view === 'admin') return &lt;AdminPanel onExit={() =&gt; setView('customer')} /&gt;;</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>return (</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;Header onAdminClick={() =&gt; setView('admin-login')} /&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;CustomerFlow /&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;footer className="py-12 mt-16" style={{background: '#0f2340', color: '#faf7f2'}}&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div className="max-w-7xl mx-auto px-4 md:px-8"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="grid md:grid-cols-3 gap-8"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;Logo size="md" color="cream" /&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;p className="text-sm opacity-70 mt-4 max-w-xs"&gt;Custom AI-designed figures, laser-cut and shipped worldwide from Türkiye.&lt;/p&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;h4 className="font-display text-lg mb-3"&gt;Materials&lt;/h4&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;ul className="text-sm space-y-1 opacity-70"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;li&gt;Laser-cut MDF wood&lt;/li&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;li&gt;Premium acrylic 5mm&lt;/li&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;li&gt;UV-printed full color&lt;/li&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/ul&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;h4 className="font-display text-lg mb-3"&gt;Support&lt;/h4&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;ul className="text-sm space-y-1 opacity-70"&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;li&gt;Worldwide shipping&lt;/li&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;li&gt;24h order review&lt;/li&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">                </span>&lt;li&gt;Etsy verified shop&lt;/li&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">              </span>&lt;/ul&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">          </span>&lt;div className="border-t border-white border-opacity-10 mt-8 pt-6 text-center text-xs opacity-50"&gt;© 2026 Figurist · Grafizm · Handcrafted with care&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/footer&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">  </span>);</span></p>
+<p class="p2"><span class="s1">};</span></p>
+<p class="p1"><span class="s1"></span><br></p>
+<p class="p2"><span class="s1">ReactDOM.createRoot(document.getElementById('root')).render(&lt;App /&gt;);</span></p>
+<p class="p2"><span class="s1">&lt;/script&gt;</span></p>
+<p class="p2"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p2"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
